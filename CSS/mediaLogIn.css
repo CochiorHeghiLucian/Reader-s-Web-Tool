@@ -1,0 +1,242 @@
+@media screen and (max-height: 600px) {
+	html,body{
+		margin: 0px;
+		padding: 0px; 
+		height: 100vh;
+		width: 100vw;
+		left: 0;
+		top: 0;
+	}
+
+	.bookFrame--logIn{
+
+		width: 70%;
+		height: auto;
+		max-width: 300px;
+
+	}
+
+	.frameTitle--logIn{
+		font-size: 0px;
+	}
+
+		/*endLogIn*/
+
+		.bookFrame--Sign2{	
+			width: 10%;
+			
+			padding: 0
+			min-width: 300px;
+		}
+
+		.termsOfUsecheckBox{
+			position: relative;
+			font-family: URW Gothic L;
+			color: white;
+			font-size: 120%;
+			margin-top: 0;
+			margin-bottom: 5%;
+		}
+
+		.bookFrame__newUser--signIn{
+			font-size: 70%;
+		}	
+
+		.frameTitle--signIn2{
+			font-size: 0px;
+			margin-top:0%;
+			margin-bottom: 0%; 
+		}
+
+		.request{
+			position: relative;
+			color: white;
+			display: block;
+			font-size: 100%;
+			text-align: left;
+			left: 10%;
+			margin-bottom: 5px;
+	
+		}
+
+		.respons{
+			position: relative;
+			width: 80%;
+			height: 40%;
+			border-radius: 5px;
+	
+
+		}
+
+		/*signIn2*/
+
+		.frameTitle--recover{
+		margin: 0px;
+		font-size: 40px;
+		border-width: 5px;
+		min-height: 150px;
+	}
+	/*recover*/
+	.respons--lendBook{
+		margin-bottom: 4%;
+		height: 10%;
+		width: 80%;
+		left: 50%;
+		top: 30%;
+		transform: translate(-50%, -50%);
+	
+		text-align: center;
+
+		/*addBookToWishlist*/
+
+
+
+
+
+}
+
+
+	
+}
+
+@media screen and (max-width: 600px){
+	html,body{
+		margin: 0px;
+		padding: 0px; 
+		height: 100vh;
+		width: 100vw;
+		left: 0;
+		top: 0;
+		overflow-x: hidden;
+	}
+
+	.bookFrame--logIn{
+		height: auto;	
+		max-width: 300px;
+
+	}
+
+	/*endLogIn*/
+
+	.bookFrame--Sign2{	
+		width: 10%;
+		height: auto;
+		min-width: 200px;
+	}
+
+	.termsOfUsecheckBox{
+		position: relative;
+		font-family: URW Gothic L;
+		color: white;
+		font-size: 120%;
+		margin-top: 0;
+		margin-bottom: 5%;
+	}
+
+	.bookFrame__newUser--signIn{
+		font-size: 70%;
+	}
+
+		.request{
+			position: relative;
+			color: white;
+			display: block;
+			font-size: 100%;
+			text-align: left;
+			left: 10%;
+			margin-bottom: 5px;
+	
+		}
+
+	/*signIn2*/
+	.frameTitle--recover{
+		margin: 0;
+		font-size: 25px;
+		border-width: 5px;
+		min-height: 150px;
+	}
+
+	/*recover*/
+
+.aboutUser__tab--LendBook{
+	position: absolute;
+	height: 40%;
+	width: 30%;
+	border-color: #A40A3C;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 20px;
+	background-color: white;
+	left:50%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 2%;
+	min-width: 200px;
+	min-height: 200px;
+	max-width: 300px;
+
+
+}
+/*addBookToWishlist*/
+
+	.frameTitle--signIn
+	{
+		margin-bottom: 10px;
+	}
+
+	.bookFrame__inputText--SignIn{
+	position: relative;
+	display: block;
+	margin-bottom: 2%;
+	margin-left: auto;
+	margin-right: auto;
+	background: white;
+	border-radius: 5px;
+	text-align: center;
+	border-width: 0px;
+	font-family: URW Gothic L;
+	font-size: 100%;
+	width:60%;
+	color: gray;
+	}
+
+	.dropdown--SignIn{
+	position: relative;
+	display: inline-block;
+	margin-bottom: 2%;
+	margin-left: auto;
+	margin-right: auto;
+	background: white;
+	border-radius: 5px;
+	text-align: center;
+	border-width: 0px;
+	font-family: URW Gothic L;
+	font-size: 100%;
+	width:19%;
+	color: gray;
+	}
+
+	.footerSeparator--form--SignIn{
+		margin-bottom:2%;
+		margin-top: 2%; 
+	}
+
+	.bookFrame__submitButton_continue--SignIn{
+		margin-top:5%;
+		font-size: 100%;
+		width: 60%;
+	}
+
+	.bookFrame--signIn{
+	height:70%;
+	width: 40%;
+	border-width: 1%;
+	}
+
+
+
+
+}
+
+

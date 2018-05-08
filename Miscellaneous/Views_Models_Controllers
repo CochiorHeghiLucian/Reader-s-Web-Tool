@@ -1,0 +1,59 @@
+VIEWS:
+
+logIn.view.php
+logIn_fail.view.php --> Causes: email not in DB / email + password invalid pair
+
+signIn.view.php
+signIn2.view.php
+signIn_fail.view.php --> Causes: !valid email addr / !valid password / !image / !phone number / gender not selected / checkbox not checked  
+
+forgottenPassword_fail.view.php --> Causes: email addr not in DB
+
+personalInfoPersonalPreferences.view.php --> 2 view-uri sau 1 view cu apel Ajax ?
+
+editProfile.view.php 
+editProfile_fail.view.php --> Causes: !image / !valid email / !valid password / !phone number
+
+yourBooX.view.php
+wishListBooX.view.php
+
+searchPage.view.php
+
+addToWishList.view.php
+addToWishList_fail.view.php --> Causes: invalid data
+
+lendBook.view.php
+lendBook_fail.view.php --> Causes: invalid data
+
+proposeBook.view.php
+
+----------------------------------------------------------------------------------
+
+CONTROLLERS:
+
+logIn
+signIn
+forgottenPassword
+personalInfo
+editProfile
+yourBooks
+wishListBooks
+searchPage
+addToWishList
+lendBook
+proposeBook
+
+----------------------------------------------------------------------------------
+
+MODEL:
+
+User
+Authentification
+Statistics
+Book
+YourBooks
+BooksWishList
+BookLendingRate
+DB
+
+----------------------------------------------------------------------------------
