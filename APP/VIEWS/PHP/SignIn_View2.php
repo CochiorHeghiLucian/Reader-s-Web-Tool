@@ -8,26 +8,26 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="viewport" content="height=device-height, initial-scale=1.0">
-	<link rel="stylesheet" href="../CSS/Styles.css">
+	<link rel="stylesheet" href="../../../PUBLIC/CSS/Styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="../CSS/mediaLogIn.css">
+	<link rel="stylesheet" href="../../../PUBLIC/CSS/mediaLogIn.css">
 
 </head>
 
-<body style="background-image:url(../Images/bookshelves-wallpaper-1920x1080.jpg)">
+<body style="background-image:url(../../../PUBLIC/IMAGES/bookshelves-wallpaper-1920x1080.jpg)">
  	<div class="bookFrame bookFrame--Sign2">
 
  		<p class="frameTitle frameTitle--signIn2">Sign In</p>
 
  		<section class="signInContainer">
  			<label class="request">Favorite authors:</label>
- 			<textarea class="respons" rows="3" cols="50" placeholder="Authors1, Authors2, ..."></textarea>
+ 			<textarea class="respons" rows="3" cols="50" placeholder="Author1, Authors2, ..."></textarea>
  		</section>
 
 
  		<section class="signInContainer">
  			<label class="request">Favorite genres:</label>
- 			<textarea class="respons" rows="3" cols="50" placeholder="Please type here your favorite gender"></textarea>
+ 			<textarea class="respons" rows="3" cols="50" placeholder="Genre1, Genre2, ..."></textarea>
  		</section>
 
 

@@ -1,11 +1,20 @@
 <!DOCTYPE html>
+<?php
+	session_start();
+
+	if(!isset($_SESSION['username']))
+	{
+		include 'LogIn_View.php';
+		die();
+	}
+?>
 
 <html>
 
 <head>
 	<title> BooX Profile </title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="../CSS/Styles.css">
+	<link rel="stylesheet" href="../../../PUBLIC/CSS/Styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -16,12 +25,6 @@
 			<li class="headerNavigator__ul__li"><a class="headerNavigator__ul__li__a" href="../HTML/YourBooks"> Your booX </a></li>
 			<li class="headerNavigator__ul__li"><a class="headerNavigator__ul__li__a" href="../HTML/WishListBooks"> BooX Wishlist </a></li>
 			<li class="headerNavigator__ul__li headerNavigator__ul__logOut"><a class="headerNavigator__ul__li__a" href="../HTML/LogIn"> Log Out </a></li>
-			<li class="headerNavigator__ul__li headerNavigator__ul__logOut ">
-				<a class="headerNavigator__ul__li__a headerNavigator__ul__li__a--home headerNavigator__ul__home " href="../HTML/PersonalInfo">
-					<i class="fa fa-home" style="font-size:23px;color:#A40A3C"></i>
-					Home 
-				</a>
-			</li>
 		</ul>
 		<form class="headerNavigator__searchForm">
 			<input class="headerNavigator__searchForm__text" type="text" placeholder="Search for booX">
@@ -32,8 +35,8 @@
 
  	<div >
  		<div class="topFrame__cover">
- 			<img class="topFrame__cover__wallpaper" src="../Images/wallpaper.jpg" alt="wallpaper">
- 			<img class="topFrame__cover__profilePicture" src="../Images/profilePicture.jpg" href="#">
+ 			<img class="topFrame__cover__wallpaper" src="../../../PUBLIC/IMAGES/wallpaper.jpg" alt="wallpaper">
+ 			<img class="topFrame__cover__profilePicture" src="../../../PUBLIC/IMAGES/profilePicture.jpg" href="#">
  			<a class="topFrame__wallpaper__editProfile" href="#"> Edit profile </a>
  		</div>
  	</div>

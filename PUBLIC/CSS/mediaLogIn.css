@@ -25,7 +25,7 @@
 		.bookFrame--Sign2{	
 			width: 10%;
 			
-			padding: 0
+			padding: 0;
 			min-width: 300px;
 		}
 
@@ -88,14 +88,7 @@
 		text-align: center;
 
 		/*addBookToWishlist*/
-
-
-
-
-
 }
-
-
 	
 }
 
@@ -175,8 +168,6 @@
 	min-width: 200px;
 	min-height: 200px;
 	max-width: 300px;
-
-
 }
 /*addBookToWishlist*/
 
@@ -233,10 +224,4 @@
 	width: 40%;
 	border-width: 1%;
 	}
-
-
-
-
 }
-
-

@@ -1,59 +1,65 @@
 VIEWS:
 
-logIn.view.php
-logIn_fail.view.php --> Causes: email not in DB / email + password invalid pair
+logIn_View.php
+logIn_fail_View.php --> Causes: email not in DB / email + password invalid pair
 
-signIn.view.php
-signIn2.view.php
-signIn_fail.view.php --> Causes: !valid email addr / !valid password / !image / !phone number / gender not selected / checkbox not checked  
+signIn_View.php
+signIn2_View.php
+signIn_fail_View.php --> Causes: !valid email addr / !valid password / !image / !phone number / gender not selected / checkbox not checked  
 
-forgottenPassword_fail.view.php --> Causes: email addr not in DB
+forgottenPassword_fail_View.php --> Causes: email addr not in DB
 
-personalInfoPersonalPreferences.view.php --> 2 view-uri sau 1 view cu apel Ajax ?
+personalInfoPersonalPreferences_View.php --> 2 view-uri sau 1 view cu apel Ajax ?
 
-editProfile.view.php 
-editProfile_fail.view.php --> Causes: !image / !valid email / !valid password / !phone number
+editProfile_View.php
+editProfile_fail_View.php --> Causes: !image / !valid email / !valid password / !phone number
 
-yourBooX.view.php
-wishListBooX.view.php
+yourBooX_View.php
+wishListBooX_View.php
 
-searchPage.view.php
+searchPage_View.php
 
-addToWishList.view.php
-addToWishList_fail.view.php --> Causes: invalid data
+addToWishList_View.php
+addToWishList_fail_View.php --> Causes: invalid data
 
-lendBook.view.php
-lendBook_fail.view.php --> Causes: invalid data
+lendBook_View.php
+lendBook_fail_View.php --> Causes: invalid data
 
-proposeBook.view.php
+proposeBook_View.php
 
 ----------------------------------------------------------------------------------
 
 CONTROLLERS:
 
-logIn
-signIn
-forgottenPassword
-personalInfo
-editProfile
-yourBooks
-wishListBooks
-searchPage
-addToWishList
-lendBook
-proposeBook
+logIn_Controller.php
+signIn_Controller.php
+forgottenPassword_Controller.php
+personalInfo_Controller.php
+editProfile_Controller.php
+yourBooks_Controller.php
+wishListBooks_Controller.php
+searchPage_Controller.php
+addToWishList_Controller.php
+lendBook_Controller.php
+proposeBook_Controller.php
 
 ----------------------------------------------------------------------------------
 
-MODEL:
+MODELS:
 
-User
-Authentification
-Statistics
-Book
-YourBooks
-BooksWishList
-BookLendingRate
-DB
+DB_Model.php
+
+User_Model.php
+
+LogIn_Model.php
+SignIn_Model.php
+
+Statistics_Model.php
+BookLendingRate_Model.php
+
+Book_Model.php
+
+YourBooks_Model.php
+BooksWishList_Model.php
 
 ----------------------------------------------------------------------------------
