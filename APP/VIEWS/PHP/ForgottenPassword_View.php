@@ -15,11 +15,9 @@
 <body style="background-image:url(../../../PUBLIC/IMAGES/bookshelves-wallpaper-1920x1080.jpg)">
  	<div class="bookFrame-recover">
  		<p class="frameTitle frameTitle--recover"> Recover your BooX password </p>
- 		<form>
- 			<input type="text" placeholder="email or username" class="bookFrame__inputText" required>
- 			<button type="submit" class="bookFrame__submitButton bookFrame__submitButton--recover">
- 				<a href="../HTML/LogIn" class="removeUnderline">Recover password</a>
- 			</button>
+ 		<form action="../../CONTROLLERS/forgottenPassword_Controller.php" method="POST">
+ 			<input name="email" type="text" placeholder="email or username" class="bookFrame__inputText" required>
+ 			<input name="submit" type="submit" value="Recover password" class="bookFrame__submitButton bookFrame__submitButton--recover">
  		</form>
  	</div>
  

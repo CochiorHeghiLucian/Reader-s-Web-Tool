@@ -41,7 +41,22 @@
                 return TRUE;
             }
             else{
-                throw new Exception("username or password is invalid. Please try again.");
+                return FALSE;
+            }
+        }
+
+        public function recoverPassword($emailAddress){
+
+            $query="SELECT `PASSWORD` FROM `USERS` WHERE `EMAIL_ADDR`='$emailAddress'";
+            
+            $sql=mysql_query($query);
+
+            if(mysql_num_rows($sql)==1)
+            {
+                return mysql_result($sql, 0);
+            }
+            else{
+                return FALSE;
             }
         }
 

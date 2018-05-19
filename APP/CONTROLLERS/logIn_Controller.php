@@ -20,6 +20,9 @@
                 $_SESSION['username']=$username;
                 header('Location:../VIEWS/PHP/PersonalInfo_View.php');
             }
+            else{
+                header('Location:../VIEWS/PHP/LogIn_fail_View.php');
+            }
         }
         catch(Exception $exception){
             echo $exception->getMessage();

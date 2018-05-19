@@ -18,7 +18,8 @@
 		<form action="../../CONTROLLERS/logIn_Controller.php" method="POST">
  			<input name="username" type="text" placeholder="email address" class="bookFrame__inputText" required>
  			<input name="password" type="password" placeholder="password" class="bookFrame__inputText" required>
-			<input name="submit" type="submit" value="Log In" class="bookFrame__submitButton">
+            <p class="logInError">Error logging in. Please try again.</p>
+            <input name="submit" type="submit" value="Log In" class="bookFrame__submitButton">
 			 
 			<p class="bookFrame__newUser"> Forgotten <a href="ForgottenPassword_View.php" style="color:white">password?</a></p>
  			<p class="bookFrame__newUser"> New BooX user? Click <a href="SignIn_View.php" style="color:white">here!</a></p>
