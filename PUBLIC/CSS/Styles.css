@@ -677,7 +677,6 @@ body{
 	color: #fff;
 }
 .coverText{
-  
   transform: perspective( 600px ) rotateY( 45deg );
 }
 .respons--editProfile{

@@ -1,10 +1,9 @@
 VIEWS:
 
 logIn_View.php
-logIn_fail_View.php --> Causes: email not in DB / email + password invalid pair
 
 signIn_View.php
-signIn2_View.php
+signIn1_View.php
 signIn_fail_View.php --> Causes: !valid email addr / !valid password / !image / !phone number / gender not selected / checkbox not checked  
 
 forgottenPassword_fail_View.php --> Causes: email addr not in DB

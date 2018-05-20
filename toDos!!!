@@ -4,3 +4,9 @@
 --> Cum fac autentificarea: cum fac sa pastrez user-ul logat atunci cand da un F5 (sau poate cand inchide pagina aplicatiei fara sa dea Log Out) --> Cookies; escapeTime; ce stochez in cookie (username, parola iar serverul cere din nou parola) ?
 --> De facut update pentru Diagrama de clase !!!
 --> De facut update pentru BD !!!
+--> de mutat PHPMailer-ul (vendor, composer.json, composer.lock) in public in un folder PHPMailer
+
+
+
+--> am nevoie de $_SESSION[''], session_start(), die();, session_destroy(); (ptr LOGOUT?) ???
+--> Am anulat view-ul de fail de la LogIn si probabil ca nu o sa mai facem view-uri separate pentru fail-uri (cu fail-uri se producea un "blocaj")

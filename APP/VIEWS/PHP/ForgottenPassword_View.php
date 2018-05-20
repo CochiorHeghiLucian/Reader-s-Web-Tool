@@ -16,9 +16,18 @@
  	<div class="bookFrame-recover">
  		<p class="frameTitle frameTitle--recover"> Recover your BooX password </p>
  		<form action="../../CONTROLLERS/forgottenPassword_Controller.php" method="POST">
- 			<input name="email" type="text" placeholder="email or username" class="bookFrame__inputText" required>
- 			<input name="submit" type="submit" value="Recover password" class="bookFrame__submitButton bookFrame__submitButton--recover">
- 		</form>
+ 			<input name="email" type="email" placeholder="email address" class="bookFrame__inputText" required>
+			 
+			 <!-- The php code is executed if the email address inserted
+			 for the password recovery could not be found in the DB: -->
+			 <?php
+			 if(isset($_GET['invalidEmailAddr'])){
+				 echo '<p class="logInError">Email address not recognized.</p>';
+			 }?>
+
+			 <input name="submit" type="submit" value="Recover password" class="bookFrame__submitButton bookFrame__submitButton--recover">
+			 <p class="bookFrame__newUser"> Back to <a href="LogIn_View.php" style="color:white">Log In</a></p>
+		 </form>
  	</div>
  
  	<footer class="footerSeparator">

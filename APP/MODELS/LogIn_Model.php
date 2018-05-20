@@ -2,24 +2,24 @@
 
     class LogIn{
 
-        private $username;
+        private $email;
         private $password;
-        private $cxn;
+        private $DB;
 
-        function __construct($username,$password){
+        public function __construct($email,$password){
 
-            /* Setting the username and password for the LogIn: */
+            /* Setting the LogIn variables: */
 
-            $this->setData($username,$password);
+            $this->setData($email,$password);
             
             /* Connecting to the DB: */
 
             $this->connectToDB();
         }
         
-        public function setData($username,$password){
+        public function setData($email,$password){
 
-            $this->username=$username;
+            $this->email=$email;
             $this->password=$password;
         }
 
@@ -28,20 +28,32 @@
             require_once '../MODELS/DB_Model.php';
             $vars='../variables.php';
             
-            $this->cxn=new DB($vars);
+            $this->DB=new DB($vars);
         }
 
-        public function getData(){
+        public function checkEmailAndPassword(){
 
-            $query="SELECT * FROM `USERS` WHERE `USER_NAME`='$this->username' AND `PASSWORD`='$this->password'";
+            $emailPasswordPair="SELECT * FROM `USERS` WHERE `EMAIL_ADDR`='$this->email' AND `PASSWORD`='$this->password'";
+            $emailPasswordPairSQL=mysql_query($emailPasswordPair);
             
-            $sql=mysql_query($query);
-            
-            if(mysql_num_rows($sql)==1){
-                return TRUE;
+            if(mysql_num_rows($emailPasswordPairSQL)==1){
+                return 'ValidEmailPasswordPair';
             }
             else{
-                return FALSE;
+                return 'InvalidEmailPasswordPair';
+            }
+        }
+
+        public function checkEmail(){
+
+            $checkEmailAddress="SELECT * FROM `USERS` WHERE `EMAIL_ADDR`='$this->email'";
+            $checkEmailAddressSQL=mysql_query($checkEmailAddress);
+
+            if(mysql_num_rows($checkEmailAddressSQL)==0){
+                return 'InvalidEmailAddress';
+            }
+            else{
+                return 'ValidEmailAddress';
             }
         }
 
@@ -61,7 +73,7 @@
         }
 
         public function close(){
-            $this->cxn->close();
+            $this->DB->close();
         }
     }
 ?>

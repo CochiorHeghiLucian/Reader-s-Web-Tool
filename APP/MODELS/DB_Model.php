@@ -1,7 +1,5 @@
 <?php
 
-    /* BooX DB: */
-
     class DB{
 
         private $host;

@@ -16,11 +16,14 @@
             
             $logIn=new LogIn($adminUser,$adminPwd);
         
-            if($logIn->getData()==TRUE)
+            if($logIn->checkEmailAndPassword()==TRUE)
             {
                 $passWordToSend=$logIn->recoverPassword($emailAddress);
                 
-                /* Sending the forgotten password of the user 
+                if($passWordToSend==NULL){
+                    header('Location:../VIEWS/PHP/ForgottenPassword_View.php?invalidEmailAddr');
+                }else{
+                    /* Sending the forgotten password of the user 
                 with the email $emailAddress: */
                 
                 require_once '/opt/lampp/htdocs/Proiect/vendor/phpmailer/phpmailer/src/PHPMailer.php';
@@ -45,7 +48,7 @@
 
                     $mail->setFrom("betiucciprian@gmail.com");
                     $mail->addAddress($emailAddress);                     // Add a recipient
-                    $messageBody="<p><strong>Hello!</strong>"."<br>"."<br>"."Your password is:"."<br>"."<br>"."<strong>".$passWordToSend."<strong>"."<br>"."<br>"."Respectfully, the BooX team."."</p>";
+                    $messageBody="<p><strong>Hello!</strong>"."<br>"."<br>"."Your password is:"."<br>"."<br>"."<strong>".$passWordToSend."</strong>"."<br>"."<br>"."Respectfully, the BooX team."."</p>";
 
                     /* Content: */
     
@@ -60,8 +63,8 @@
                     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
                 }
                 
-                header('Location:../VIEWS/PHP/LogIn_View.php');
-            }
+                header('Location:../VIEWS/PHP/LogIn_View.php');}
+            } 
         }
         catch(Exception $exception){
             echo $exception->getMessage();

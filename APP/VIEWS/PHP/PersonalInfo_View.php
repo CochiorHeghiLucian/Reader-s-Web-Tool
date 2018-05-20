@@ -1,13 +1,4 @@
 <!DOCTYPE html>
-<?php
-	session_start();
-
-	if(!isset($_SESSION['username']))
-	{
-		include 'LogIn_View.php';
-		die();
-	}
-?>
 
 <html>
 
