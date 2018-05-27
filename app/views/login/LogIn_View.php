@@ -16,7 +16,7 @@
 <body style="background-image:url(http://localhost/ProiectTWTEST/PUBLIC/IMAGES/bookshelves-wallpaper-1920x1080.jpg); background-repeat: no-repeat;">
 	<div class="bookFrame bookFrame--logIn">	
 		<p class="frameTitle frameTitle--logIn">Log In</p> 
-		<form action="../public/index.php" method="POST">
+		<form action="../PUBLIC/index.php" method="POST">
  			<input name="email" type="email" placeholder="email address" class="bookFrame__inputText" required>
  			<input name="password" type="password" placeholder="password" class="bookFrame__inputText" required>
 			 
