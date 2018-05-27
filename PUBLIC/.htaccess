@@ -1,7 +1,7 @@
-Options -MultiViews 
+Options -MultiViews
 RewriteEngine On
 
-RewriteBase /TUTORIAL_MVC/PUBLIC
+RewriteBase /ProiectTWTEST/public
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

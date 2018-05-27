@@ -1,4 +1,3 @@
 <?php
-	require_once 'CORE/App.php';
-	require_once 'CORE/Controller.php';
-?>
+require_once 'core/App.php';
+require_once 'core/Controller.php';
