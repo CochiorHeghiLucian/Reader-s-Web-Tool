@@ -1,9 +1,8 @@
 <?php
 class Auth{
-    private $database;
-    private $email, $passwaord;
 
     public static function validateUser($email, $password){
+        
         require_once 'DB.php';
         $database = DB::getConnection();
      
@@ -23,5 +22,25 @@ class Auth{
         $stmt->close();
     }
 
+    public static function validateAccount($email){
 
+        require_once 'DB.php';
+        $database = DB::getConnection();
+
+        $query = "SELECT `USER_NAME` FROM `USERS` WHERE `EMAIL_ADDR`=?";
+        $stmt = $database->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->bind_result($userName);
+        $stmt->fetch();      
+    
+        if($userName != null){
+            return "valid";
+        }else{
+            return "invalid";
+        }
+    
+        $stmt->close();
+    }
 }
+?>

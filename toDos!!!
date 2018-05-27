@@ -1,0 +1,12 @@
+--> de inserat un POPUP pentru optiunea "remove book" care sa te intrebe daca sigur vrei sa scoti cartea
+--> expunerea aplicatiei ca API: trebuie ca sa poata face GET din API-ul noastru fara sa se intre in aplicatie si ar trebui sa se primeasca un JSON (sau altceva) cu un array de ceva ..
+--> Folosirea API Google Reads (de vazut in ce format expune APIul datele (XML sau JSON))-- > exemplul cu Chuck Norris ... cum fac GET-ul, ce primesc in JSON (sau poate XML) si unde stochez datele in BD ..
+--> Cum fac autentificarea: cum fac sa pastrez user-ul logat atunci cand da un F5 (sau poate cand inchide pagina aplicatiei fara sa dea Log Out) --> Cookies; escapeTime; ce stochez in cookie (username, parola iar serverul cere din nou parola) ?
+--> De facut update pentru Diagrama de clase !!!
+--> De facut update pentru BD !!!
+--> de mutat PHPMailer-ul (vendor, composer.json, composer.lock) in public in un folder PHPMailer
+
+
+
+--> am nevoie de $_SESSION[''], session_start(), die();, session_destroy(); (ptr LOGOUT?) ???
+--> Am anulat view-ul de fail de la LogIn si probabil ca nu o sa mai facem view-uri separate pentru fail-uri (cu fail-uri se producea un "blocaj")
