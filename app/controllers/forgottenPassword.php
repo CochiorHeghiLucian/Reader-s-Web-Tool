@@ -4,7 +4,8 @@ class ForgottenPassword extends Controller{
 
     public function index($name=''){
 
-        require_once '../app/core/Auth.php';
+        require_once '../app/models/auth_model.php';
+        require_once '../app/core/Email.php';
 
         $this->view("forgottenPassword/ForgottenPassword_View");
 
@@ -14,7 +15,7 @@ class ForgottenPassword extends Controller{
 
             if(Auth::validateAccount($emailAddress)=="valid"){
 
-                $passwordToBeSent=Auth::getPassword($emailAddress);
+                $passwordToBeSent=Email::getPassword($emailAddress);
 
                 /* Sending the forgotten password of the user 
                 with the email $emailAddress: */

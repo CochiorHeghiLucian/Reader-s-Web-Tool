@@ -4,7 +4,7 @@ class Login extends Controller{
 
     public function index($name=''){
 
-        require_once '../app/core/Auth.php';
+        require_once '../app/models/auth_model.php';
         
         $this->view('login/LogIn_View');
         
@@ -32,7 +32,7 @@ class Login extends Controller{
 
     private function validare($email, $pass){
 
-        require_once '../app/core/Auth.php';
+        require_once '../app/models/auth_model.php';
 
         if(Auth::validateUser($email, $pass) == "valid"){
             return 'valid';
