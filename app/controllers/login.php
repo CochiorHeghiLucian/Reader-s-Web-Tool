@@ -11,16 +11,18 @@ class Login extends Controller{
              $email = $_POST['email'];
              $pass = $_POST['password'];
 
-             if($this->validare($email, $pass)){
+             if($this->validare($email, $pass) == 'valid'){
                
                 $id = Auth::getUserIdByEmail($email);
                 $_SESSION['userId'] = $id;
 
                 header('Location:http://localhost/ProiectTWTEST/PUBLIC/profile');
                 exit();
-             } 
-             else{
+             }else if ($this->validare($email, $pass) == 'invalidEmail'){
                 header('Location:http://localhost/ProiectTWTEST/PUBLIC/login/viewError/invalidEmail');
+                exit();
+             }else{
+                header('Location:http://localhost/ProiectTWTEST/PUBLIC/login/viewError/invalidPassword');
                 exit();
              }
         }
@@ -31,9 +33,11 @@ class Login extends Controller{
         require_once '../app/core/Auth.php';
 
         if(Auth::validateUser($email, $pass) == "valid"){
-            return true;
+            return 'valid';
+         }else if(Auth::validateUser($email, $pass) == "invalidEmail"){
+             return "invalidEmail";
          }else{
-             return false;
+             return "invalidPassword";
          }
     }
 

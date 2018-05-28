@@ -5,18 +5,31 @@ class Auth{
         
         require_once 'DB.php';
         $database = DB::getConnection();
+
+        $queryCount = "SELECT COUNT(*) FROM `USERS` WHERE `EMAIL_ADDR`=?";
+        $stmt1 = $database->prepare($queryCount);
+        $stmt1->bind_param("s", $email);
+        $stmt1->execute();
+        $stmt1->bind_result($count);
+        $stmt1->fetch();
+        $stmt1->close();
+
+        if($count < 1){
+            return "invalidEmail";
+        }
+
      
-        $query = "SELECT EMAIL_ADDR, PASSWORD FROM `USERS` WHERE `EMAIL_ADDR`=? AND `PASSWORD`=?";
+        $query = "SELECT  COUNT(*) FROM `USERS` WHERE `EMAIL_ADDR`=? AND `PASSWORD`=?";
         $stmt = $database->prepare($query);
         $stmt->bind_param("ss", $email, $password);
         $stmt->execute();
-        $stmt->bind_result($dbEmail, $dbPassword);
+        $stmt->bind_result($count);
         $stmt->fetch();      
     
-        if($dbEmail == $email && $dbPassword == $password){
-            return "valid";
+        if($count < 1){
+            return "invalidPassword";
         }else{
-            return "invalid";
+            return 'valid';
         }
         
         $stmt->close();
