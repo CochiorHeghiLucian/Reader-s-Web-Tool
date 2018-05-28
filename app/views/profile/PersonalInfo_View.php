@@ -49,6 +49,33 @@
  				<li class="aboutUser_ul_li"> <i class="fa fa-star" style="font-size:30px; color:#A40A3C"></i> Rating: <?php echo $data['rating']; ?> </li>
  			</ul>
  		</div>
+
+
+
+
+
+
+	<!-- <div class="aboutUser__tab aboutUser__tab__personalInfoPreferences none">
+ 			<ul class="aboutUser__tab__personalInfoPreferences__ul">
+ 				<li class="aboutUser__personalInfoPreferences__ul__li"> 
+ 					<a class="aboutUser__personalInfoPreferences__ul__li__a" href="../HTML/PersonalInfo"> Personal Info </a>  
+ 				</li>
+ 				<li class="aboutUser__personalInfoPreferences__ul__li"> 
+ 					<a class="aboutUser__personalInfoPreferences__ul__li__a" href="../HTML/Preferences"> Preferences </a>  
+ 				</li>
+ 			</ul>
+ 			<ul class="aboutUser_ul">
+ 				<li class="aboutUser_ul_li"><i class="fa fa-group" style="font-size:30px;color:#A40A3C"></i> Favorite authors: </li>
+ 				<li class="aboutUser_ul_li"><i class="fa fa-pagelines" style="font-size:30px;color:#A40A3C"></i> Favorite genres: </li>
+ 				<li class="aboutUser_ul_li"><i class="fa fa-book" style="font-size:30px;color:#A40A3C"></i> Prefered books: </li>
+ 			</ul>
+ 		</div> -->
+
+
+
+
+
+
  		<div class="aboutUser__tab aboutUser__tab__favoriteQuote">
  			<p class="aboutUser__tab__favoriteQuote__p">  "<?php echo $data['quote']; ?>"   </p>
  		</div>
@@ -61,5 +88,19 @@
   		</ul>
  	</footer>
 </body>
+
+
+<script>
+	function loadData(){
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				document.getElementById("demo").innerHTML = this.responseText;
+			}
+		};
+		xhttp.open("Get", "http://localhost/ProiectTWTEST/profile/getPreferences", true);
+		xhttp.send();
+	}
+</script>
 
 </html> 

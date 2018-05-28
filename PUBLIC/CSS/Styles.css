@@ -694,3 +694,7 @@ body{
 .logInError{
 	color:white;
 }
+
+.none{
+	display: none;
+}

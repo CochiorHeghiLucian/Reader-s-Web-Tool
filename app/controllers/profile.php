@@ -17,4 +17,8 @@ class Profile extends Controller{
 
         
     }
+
+    public function getPreferences(){
+        echo "apel Ajax test succes";
+    }
 }
