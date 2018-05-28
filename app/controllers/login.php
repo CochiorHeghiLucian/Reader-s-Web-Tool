@@ -3,7 +3,9 @@
 class Login extends Controller{
 
     public function index($name=''){
+
         require_once '../app/core/Auth.php';
+        
         $this->view('login/LogIn_View');
         
         if(!empty($_POST['email']) && !empty($_POST['password'])){

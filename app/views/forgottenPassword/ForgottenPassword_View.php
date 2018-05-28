@@ -20,10 +20,10 @@
 			 
 			 <!-- The php code is executed if the email address inserted
 			 for the password recovery could not be found in the DB: -->
-			 <?php
-			 if(isset($_GET['invalidEmailAddr'])){
-				 echo '<p class="logInError">Email address not recognized.</p>';
-			 }?>
+			
+			<?php if(isset($data['error']) && $data['error'] == "invalidEmail"){
+				echo '<p class="logInError">Email address not recognized.</p>';}
+			?>
 
 			 <input name="submit" type="submit" value="Recover password" class="bookFrame__submitButton bookFrame__submitButton--recover">
 			 <p class="bookFrame__newUser"> Back to <a href="http://localhost/ProiectTWTEST/PUBLIC/login" style="color:white">Log In</a></p>

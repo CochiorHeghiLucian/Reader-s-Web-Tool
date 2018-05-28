@@ -14,6 +14,8 @@ class ForgottenPassword extends Controller{
 
             if(Auth::validateAccount($emailAddress)=="valid"){
 
+                $passwordToBeSent=Auth::getPassword($emailAddress);
+
                 /* Sending the forgotten password of the user 
                 with the email $emailAddress: */
                 
@@ -26,7 +28,7 @@ class ForgottenPassword extends Controller{
                 try { 
                     /* Server settings: */
                     
-                    $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+                    $mail->SMTPDebug = 0;                                 // Enable verbose debug output
                     $mail->isSMTP();                                      // Set mailer to use SMTP
                     $mail->Host = "smtp.gmail.com";                       // Specify main and backup SMTP servers
                     $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -39,7 +41,7 @@ class ForgottenPassword extends Controller{
 
                     $mail->setFrom("betiucciprian@gmail.com");
                     $mail->addAddress($emailAddress);                     // Add a recipient
-                    $messageBody="<p><strong>Hello!</strong>"."<br>"."<br>"."Your password is:"."<br>"."<br>"."<strong>".$passWordToSend."</strong>"."<br>"."<br>"."Respectfully, the BooX team."."</p>";
+                    $messageBody="<p><strong>Hello!</strong>"."<br>"."<br>"."Your password is:"."<br>"."<br>"."<strong>".$passwordToBeSent."</strong>"."<br>"."<br>"."Respectfully, the BooX team."."</p>";
 
                     /* Content: */
     
@@ -50,17 +52,25 @@ class ForgottenPassword extends Controller{
                     $mail->AltBody =strip_tags($messageBody);
 
                     $mail->send();
+                    
                 } catch (Exception $e){
                     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
                 }
-
+                
                 header('Location:http://localhost/ProiectTWTEST/PUBLIC/login');
-                exit(); // NEEDED ???
+                exit();
             }
-        }
-        else{
+            else{
+            
+                header('Location:http://localhost/ProiectTWTEST/PUBLIC/forgottenPassword/viewError/invalidEmail');
+                exit();
+            }
+        } 
+    }
 
-        }
+    public function viewError($data = []){
+
+        $this->view('forgottenPassword/ForgottenPassword_View', ['error'=>$data]);
     }
 }
 ?>
