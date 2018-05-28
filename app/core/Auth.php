@@ -48,7 +48,7 @@ class Auth{
     
         $database = DB::getConnection();
      
-        $query = "SELECT USER_ID, PASSWORD FROM `USERS` WHERE `EMAIL_ADDR`=?";
+        $query = "SELECT `USER_ID` FROM `USERS` WHERE `EMAIL_ADDR`=?";
         $stmt = $database->prepare($query);
         $stmt->bind_param("s", $email);
         $stmt->execute();

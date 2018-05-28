@@ -1,8 +1,9 @@
 <?php
+ session_start();
 class Login extends Controller{
 
     public function index($name=''){
-
+        require_once '../app/core/Auth.php';
         $this->view('login/LogIn_View');
         
         if(!empty($_POST['email']) && !empty($_POST['password'])){
@@ -11,6 +12,9 @@ class Login extends Controller{
              $pass = $_POST['password'];
 
              if($this->validare($email, $pass)){
+               
+                $id = Auth::getUserIdByEmail($email);
+                $_SESSION['userId'] = $id;
 
                 header('Location:http://localhost/ProiectTWTEST/PUBLIC/profile');
                 exit();

@@ -43,14 +43,14 @@
  				</li>
  			</ul>
  			<ul class="aboutUser_ul">
- 				<li class="aboutUser_ul_li"> <i class="fa fa-home" style="font-size:30px;color:#A40A3C"></i> Lives in: </li>
- 				<li class="aboutUser_ul_li"> <i class="fa fa-facebook-square" style="font-size:30px; color:#A40A3C"></i> Facebook account: </li>
- 				<li class="aboutUser_ul_li"> <i class="fa fa-twitter-square" style="font-size:30px; color:#A40A3C"></i> Twitter account: </li>
- 				<li class="aboutUser_ul_li"> <i class="fa fa-star" style="font-size:30px; color:#A40A3C"></i> Rating: </li>
+ 				<li class="aboutUser_ul_li"> <i class="fa fa-home" style="font-size:30px;color:#A40A3C"></i> Lives in: <?php echo $data['location'][1].', '.$data['location'][0]; ?> </li>
+ 				<li class="aboutUser_ul_li"> <i class="fa fa-facebook-square" style="font-size:30px; color:#A40A3C"></i> Facebook account: <?php echo $data['facebook']?> </li>
+ 				<li class="aboutUser_ul_li"> <i class="fa fa-twitter-square" style="font-size:30px; color:#A40A3C"></i> Twitter account: <?php echo $data['twitter']; ?> </li>
+ 				<li class="aboutUser_ul_li"> <i class="fa fa-star" style="font-size:30px; color:#A40A3C"></i> Rating: <?php echo $data['rating']; ?> </li>
  			</ul>
  		</div>
  		<div class="aboutUser__tab aboutUser__tab__favoriteQuote">
- 			<p class="aboutUser__tab__favoriteQuote__p"> "If one cannot enjoy reading a book over and over again, there is no use in reading at all." (Oscar Wilde)</p>
+ 			<p class="aboutUser__tab__favoriteQuote__p">  "<?php echo $data['quote']; ?>"   </p>
  		</div>
  	</div>
  	<footer class="footerSeparator footerSeparator--userProfile">

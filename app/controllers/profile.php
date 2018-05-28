@@ -1,16 +1,20 @@
 <?php
+ session_start();
 class Profile extends Controller{
 
     public function index(){
-        require_once '../models/profile_model.php';
-        session_start();
+        require_once '../app/models/profile_model.php';
+       
         $data = array();
+        
 
         if(isset($_SESSION['userId'])){
-            $userId = $_SESSION['userId']
-            $data.push(array_values(Profile::getLocation($userId)));
+            $userId = $_SESSION['userId'];
+            $data = ProfileModel::getPersonalInfoData($userId);
+            
+            $this->view("profile/PersonalInfo_View", $data);
         }
 
-        $this->view("profile/PersonalInfo_View", $data);
+        
     }
 }
