@@ -1,4 +1,5 @@
 <?php
+
 class DB{
     private static $dataBase;
 
@@ -9,3 +10,4 @@ class DB{
         return $dataBase;
     }
 }
+?>

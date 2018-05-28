@@ -2,6 +2,7 @@
 class ProfileModel{
 
     public static function getPersonalInfoData($userId){
+
         $personalInfoData['rating'] = self::getRating($userId);
         $personalInfoData['twitter'] = self::getTwitterAccount($userId);
         $personalInfoData['facebook'] = self::getFacebookAccount($userId);
@@ -12,6 +13,7 @@ class ProfileModel{
     }
 
     private static function getQuote($userId){
+
         require_once '../app/core/DB.php';
 
         $database = DB::getConnection();
@@ -23,16 +25,13 @@ class ProfileModel{
         $stmt->bind_result($quote);
         $stmt->fetch(); 
         
-        
         return $quote;
     
-        
         $stmt->close();
-
     }
-
     
     private static function getRating($userId){
+
         require_once '../app/core/DB.php';
 
         $database = DB::getConnection();
@@ -44,17 +43,13 @@ class ProfileModel{
         $stmt->bind_result($rating);
         $stmt->fetch(); 
         
-        
         return $rating;
     
-        
         $stmt->close();
-
     }
 
-
-
     private static function getTwitterAccount($userId){
+
         require_once '../app/core/DB.php';
 
         $database = DB::getConnection();
@@ -66,16 +61,13 @@ class ProfileModel{
         $stmt->bind_result($twitterAccount);
         $stmt->fetch(); 
         
-        
         return $twitterAccount;
-    
         
         $stmt->close();
-
     }
 
-
     private static function getFacebookAccount($userId){
+
         require_once '../app/core/DB.php';
 
         $database = DB::getConnection();
@@ -87,16 +79,13 @@ class ProfileModel{
         $stmt->bind_result($facebookAccount);
         $stmt->fetch(); 
         
-        
         return $facebookAccount;
     
-        
         $stmt->close();
-
     }
 
-
     private static function getLocation($userId){
+
         require_once '../app/core/DB.php';
 
         $database = DB::getConnection();
@@ -109,10 +98,9 @@ class ProfileModel{
         $stmt->fetch(); 
         
         $locationArray = array($country, $city);
+        
         return $locationArray;
     
-        
         $stmt->close();
-
     }
 }

@@ -3,7 +3,8 @@ class Auth{
 
     public static function validateUser($email, $password){
         
-        require_once 'DB.php';
+        require_once '../app/core/DB.php';
+
         $database = DB::getConnection();
 
         $queryCount = "SELECT COUNT(*) FROM `USERS` WHERE `EMAIL_ADDR`=?";
@@ -18,7 +19,6 @@ class Auth{
             return "invalidEmail";
         }
 
-     
         $query = "SELECT  COUNT(*) FROM `USERS` WHERE `EMAIL_ADDR`=? AND `PASSWORD`=?";
         $stmt = $database->prepare($query);
         $stmt->bind_param("ss", $email, $password);
@@ -37,7 +37,8 @@ class Auth{
 
     public static function validateAccount($email){
 
-        require_once 'DB.php';
+        require_once '../app/core/DB.php';
+
         $database = DB::getConnection();
 
         $query = "SELECT `USER_NAME` FROM `USERS` WHERE `EMAIL_ADDR`=?";
@@ -57,7 +58,8 @@ class Auth{
     }
 
    public static function getUserIdByEmail($email){
-        require_once 'DB.php';
+
+        require_once '../app/core/DB.php';
     
         $database = DB::getConnection();
      
@@ -71,23 +73,6 @@ class Auth{
         return $userId;
         
         $stmt->close();
-
-    }
-
-    public static function getPassword($email){
-
-        require_once 'DB.php';
-
-        $database = DB::getConnection();
-
-        $query="SELECT `PASSWORD` FROM `USERS` WHERE `EMAIL_ADDR`=?";
-        $stmt=$database->prepare($query);
-        $stmt->bind_param("s",$email);
-        $stmt->execute();
-        $stmt->bind_result($password);
-        $stmt->fetch();
-
-        return $password;
     }
 }
 ?>
