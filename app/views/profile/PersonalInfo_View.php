@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
+<body onLoad="getProfileInformation()">
 	<nav class="headerNavigator">
 		<ul class="headerNavigator__ul">
 			<li class="headerNavigator__ul__li"><a class="headerNavigator__ul__li__a" href="../HTML/YourBooks"> Your booX </a></li>
@@ -32,22 +32,33 @@
  		</div>
  	</div>
 
- 	<div class="aboutUser">
+ 	<div class="aboutUser" >
  		<div class="aboutUser__tab aboutUser__tab__personalInfoPreferences">
+
  			<ul class="aboutUser__tab__personalInfoPreferences__ul">
  				<li class="aboutUser__personalInfoPreferences__ul__li"> 
- 					<a class="aboutUser__personalInfoPreferences__ul__li__a" href="../HTML/PersonalInfo"> Personal Info </a>  
+ 					<button class="aboutUser__personalInfoPreferences__ul__li__a"  onclick="displayDiv('profil_personal_info');hideDiv('profil_preference');"> Personal Info  
  				</li>
  				<li class="aboutUser__personalInfoPreferences__ul__li"> 
- 					<a class="aboutUser__personalInfoPreferences__ul__li__a" href="../HTML/Preferences"> Preferences </a>  <h1>
+ 					<button class="aboutUser__personalInfoPreferences__ul__li__a" onclick="displayDiv('profil_preference');hideDiv('profil_personal_info');"> Preferences
  				</li>
  			</ul>
- 			<ul class="aboutUser_ul">
- 				<li class="aboutUser_ul_li"> <i class="fa fa-home" style="font-size:30px;color:#A40A3C"></i> Lives in: <?php echo $data['location'][1].', '.$data['location'][0]; ?> </li>
- 				<li class="aboutUser_ul_li"> <i class="fa fa-facebook-square" style="font-size:30px; color:#A40A3C"></i> Facebook account: <?php echo $data['facebook']?> </li>
- 				<li class="aboutUser_ul_li"> <i class="fa fa-twitter-square" style="font-size:30px; color:#A40A3C"></i> Twitter account: <?php echo $data['twitter']; ?> </li>
- 				<li class="aboutUser_ul_li"> <i class="fa fa-star" style="font-size:30px; color:#A40A3C"></i> Rating: <?php echo $data['rating']; ?> </li>
+
+
+ 			<ul class="aboutUser_ul " id="profil_personal_info">
+ 				<li class="aboutUser_ul_li"> <i class="fa fa-home" style="font-size:30px;color:#A40A3C"></i> Lives in: <span id="location">  </span> </li>
+ 				<li class="aboutUser_ul_li"> <i class="fa fa-facebook-square" style="font-size:30px; color:#A40A3C"></i> Facebook account: <span id="facebook">  </span> </li>
+ 				<li class="aboutUser_ul_li"> <i class="fa fa-twitter-square" style="font-size:30px; color:#A40A3C"></i> Twitter account: <span id="twitter">  </span> </li>
+ 				<li class="aboutUser_ul_li"> <i class="fa fa-star" style="font-size:30px; color:#A40A3C"></i> Rating: <span id="rating">  </span> </li>
  			</ul>
+
+
+ 			<ul class="aboutUser_ul none" id="profil_preference">
+ 				<li class="aboutUser_ul_li"><i class="fa fa-group" style="font-size:30px;color:#A40A3C", ></i> Favorite authors: <span id="authors">  </span> </li>
+ 				<li class="aboutUser_ul_li"><i class="fa fa-pagelines" style="font-size:30px;color:#A40A3C"></i> Favorite genres: <span id="genres">  </span> </li>
+ 				<li class="aboutUser_ul_li"><i class="fa fa-book" style="font-size:30px;color:#A40A3C" ></i> Prefered books: <span id="books">  </span> </li>
+ 			</ul>
+
  		</div>
 
 
@@ -55,13 +66,13 @@
 
 
 
-	<!-- <div class="aboutUser__tab aboutUser__tab__personalInfoPreferences none">
+	<!-- <div class="aboutUser__tab aboutUser__tab__personalInfoPreferences none" id="profil_preference">
  			<ul class="aboutUser__tab__personalInfoPreferences__ul">
  				<li class="aboutUser__personalInfoPreferences__ul__li"> 
- 					<a class="aboutUser__personalInfoPreferences__ul__li__a" href="../HTML/PersonalInfo"> Personal Info </a>  
+ 					<button type="button" class="aboutUser__personalInfoPreferences__ul__li__a" > Personal Info   
  				</li>
  				<li class="aboutUser__personalInfoPreferences__ul__li"> 
- 					<a class="aboutUser__personalInfoPreferences__ul__li__a" href="../HTML/Preferences"> Preferences </a>  
+ 					<button type="button" class="aboutUser__personalInfoPreferences__ul__li__a" onclick="hideDiv('profil_personal_info');displayDiv('profil_preference');" > Preferences </a>  
  				</li>
  			</ul>
  			<ul class="aboutUser_ul">
@@ -77,7 +88,7 @@
 
 
  		<div class="aboutUser__tab aboutUser__tab__favoriteQuote">
- 			<p class="aboutUser__tab__favoriteQuote__p">  "<?php echo $data['quote']; ?>"   </p>
+ 			<p class="aboutUser__tab__favoriteQuote__p" id="quote">  </p>
  		</div>
  	</div>
  	<footer class="footerSeparator footerSeparator--userProfile">
@@ -90,17 +101,65 @@
 </body>
 
 
+
 <script>
-	function loadData(){
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function(){
-			if(this.readyState == 4 && this.status == 200){
-				document.getElementById("demo").innerHTML = this.responseText;
-			}
-		};
-		xhttp.open("Get", "http://localhost/ProiectTWTEST/profile/getPreferences", true);
-		xhttp.send();
+	function hideDiv(id){
+		
+		 var element = document.getElementById(id);
+		 if(!element.classList.contains("none")){
+			element.classList.add("none");
+		}
+		 
+
 	}
+
+	function displayDiv(id){
+		var element = document.getElementById(id);
+		if(element.classList.contains("none")){
+			element.classList.remove("none");
+		}
+	}
+</script>
+
+<script>
+	function getProfileInformation(){
+		let mockReq = new XMLHttpRequest();
+		mockReq.open('GET', 'http://localhost/ProiectTWTEST/PUBLIC/profile/getUserProfileInformation');
+
+		mockReq.addEventListener('load', function onLoad(){
+			let jsonResp = JSON.parse(mockReq.response);
+			switch(mockReq.status){
+				case 200:
+					console.log("Call ajax success!");
+					changeTextElements(jsonResp);
+					
+					break;
+				default:
+					console.log("Alte probleme");
+					break;
+			}
+		});
+
+		mockReq.addEventListener('error', () =>{
+			console.error("Something failled");
+		});
+
+		mockReq.send();
+	}
+
+	function changeTextElements(jsonResp){
+		document.getElementById("authors").innerHTML = jsonResp.authors;
+		document.getElementById("genres").innerHTML = jsonResp.genres;
+		document.getElementById("books").innerHTML = jsonResp.books;
+		document.getElementById("location").innerHTML = jsonResp.location[1]+', '+jsonResp.location[0];
+		document.getElementById("facebook").innerHTML = jsonResp.facebook;
+		document.getElementById("twitter").innerHTML = jsonResp.twitter;
+		document.getElementById("rating").innerHTML = jsonResp.rating;
+		document.getElementById("quote").innerHTML = '"'+jsonResp.quote+'"';
+
+
+	}
+
 </script>
 
 </html> 

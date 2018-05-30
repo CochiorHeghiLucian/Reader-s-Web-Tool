@@ -1,24 +1,22 @@
 <?php
  session_start();
+ require_once '../app/models/profile_model.php';
 class Profile extends Controller{
 
     public function index(){
-        require_once '../app/models/profile_model.php';
        
-        $data = array();
-        
-
-        if(isset($_SESSION['userId'])){
-            $userId = $_SESSION['userId'];
-            $data = ProfileModel::getPersonalInfoData($userId);
             
-            $this->view("profile/PersonalInfo_View", $data);
-        }
+            $this->view("profile/PersonalInfo_View");
+        
 
         
     }
 
-    public function getPreferences(){
-        echo "apel Ajax test succes";
+    public function getUserProfileInformation(){
+        $userId = $_SESSION['userId'];
+        $data = ProfileModel::getPersonalInfoData($userId);
+        $data = json_encode($data);
+        echo $data;
+        
     }
 }

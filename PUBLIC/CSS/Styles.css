@@ -698,3 +698,7 @@ body{
 .none{
 	display: none;
 }
+
+.displayInline{
+	display: inline;
+}
