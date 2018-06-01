@@ -48,54 +48,9 @@
             <h1 class="title"> A HIGHER LOYALTY</h1>
             <button class="button">Remove book</button>
         </div>
-        <div class="container">
-        	<div class="coverBlockImage">
-        		<img src="../Images/img2.jpg">
-        	</div>
-        	<div class="descriptionBook">
-        		<h1>Description</h1>
-        		<p>
-        			f dsahfgsadg fsdfgdsagfhgds afgsaffdw tefadsad fdsytsafsd fsdafsad gsaf
-        			dsfda. sdfsadffasdfasd .sdf sdagfag.fdsaf sdf sg..dsfagdsagfadg.sdgasffdg
-        			gdsagasgsd.gsdsadgsad.sagdg  sag sags. gsagsf. fdsgfdsgfsdgfdg  gfafgfdgd
-        			dsafgsdgafdgagfdagadgfagfahdfhghafdgah
-        		</p>
-        	</div>
-            <h1 class="title"> DUNKIRK </h1>
-             <button class="button">Remove book</button>
-        </div>
-        <div class="container">
-        	<div class="coverBlockImage">
-        		<img src="../Images/img3.jpg">
-        	</div>
-        	<div class="descriptionBook">
-        		<h1>Description</h1>
-        		<p>
-        			f dsahfgsadg fsdfgdsagfhgds afgsaffdw tefadsad fdsytsafsd fsdafsad gsaf
-        			dsfda. sdfsadffasdfasd .sdf sdagfag.fdsaf sdf sg..dsfagdsagfadg.sdgasffdg
-        			gdsagasgsd.gsdsadgsad.sagdg  sag sags. gsagsf. fdsgfdsgfsdgfdg  gfafgfdgd
-        			dsafgsdgafdgagfdagadgfagfahdfhghafdgah
-        		</p>
-        	</div>
-            <h1 class="title"> A WRINKLE in TIME</h1>
-            <button class="button">Remove book</button>
-        </div>
-        <div class="container">
-        	<div class="coverBlockImage">
-        		<img src="../Images/img4.jpg">
-        	</div>
-        	<div class="descriptionBook">
-        		<h1>Description:</h1>
-        		<p>
-        			f dsahfgsadg fsdfgdsagfhgds afgsaffdw tefadsad fdsytsafsd fsdafsad gsaf
-        			dsfda. sdfsadffasdfasd .sdf sdagfag.fdsaf sdf sg..dsfagdsagfadg.sdgasffdg
-        			gdsagasgsd.gsdsadgsad.sagdg  sag sags. gsagsf. fdsgfdsgfsdgfdg  gfafgfdgd
-        			dsafgsdgafdgagfdagadgfagfahdfhghafdgah
-        		</p>
-        	</div>
-            <h1 class="title"> RUSSIAN ROULETTE</h1>
-            <button class="button">Remove book</button>
-        </div>
+    
+        
+       
       </section>
 
 
