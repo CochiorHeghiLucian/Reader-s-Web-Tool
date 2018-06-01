@@ -37,7 +37,7 @@
 			<input name="submit" type="submit" value="Log In" class="bookFrame__submitButton">
 
 			<p class="bookFrame__newUser"> Forgotten <a href="http://localhost/ProiectTWTEST/PUBLIC/forgottenPassword" style="color:white">password?</a></p>
- 			<p class="bookFrame__newUser"> New BooX user? Click <a href="http://localhost/ProiectTWTEST/PUBLIC/signIn1" style="color:white">here!</a></p>
+ 			<p class="bookFrame__newUser"> New BooX user? Click <a href="http://localhost/ProiectTWTEST/PUBLIC/signIn" style="color:white">here!</a></p>
 		</form>
  	</div>
 
