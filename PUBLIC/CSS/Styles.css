@@ -119,8 +119,8 @@ body{
 	min-height: 150px;
 }
 .frameTitle--signIn{
-	margin-top:7%;
-	margin-bottom: 17%; 
+	margin-top:4%;
+	margin-bottom: 9%; 
 }
 .frameTitle--signIn2{
 	margin-top:14%;
@@ -701,4 +701,11 @@ body{
 
 .displayInline{
 	display: inline;
+}
+.signInErrorMessage{
+	margin: 0px auto 5px auto;
+	color:#400;
+	font-family: URW Gothic L;
+	font-size: 180%;
+	font-weight: bold;
 }

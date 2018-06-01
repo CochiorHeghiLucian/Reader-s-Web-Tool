@@ -1,5 +1,7 @@
 <?php
- session_start();
+
+session_start();
+
 class Login extends Controller{
 
     public function index($name=''){
@@ -16,7 +18,9 @@ class Login extends Controller{
              if($this->validare($email, $pass) == 'valid'){
                
                 $id = Auth::getUserIdByEmail($email);
+
                 $_SESSION['userId'] = $id;
+                $_SESSION['email']=$email;
 
                 header('Location:http://localhost/ProiectTWTEST/PUBLIC/profile');
                 exit();
