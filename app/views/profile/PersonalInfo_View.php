@@ -100,9 +100,11 @@
  	</footer>
 </body>
 
+<<<<<<< Updated upstream
 <script src="http://localhost/ProiectTWTEST/PUBLIC/JS/profile.js"> </script>
 
 
+=======
 <script>
 
 	function hideDiv(id){
@@ -169,5 +171,6 @@
 	}
 
 </script>
+>>>>>>> Stashed changes
 
 </html> 
