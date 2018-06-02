@@ -18,4 +18,14 @@ class YourBoox extends Controller{
        // $out = array_values($resutArray);
         //echo json_encode($resutArray);
     }
+
+    public function deleteBook(){
+        $title = file_get_contents('php://input');
+     //   echo  "Asta e titlul : " .$title ."---";
+        $userId = $_SESSION['userId'];
+        $bookId= YourBooksModel::deleteBookFromDB($userId, $title);
+        echo  "Asta e titlul : " .$title ."---> ". $bookId." <----";
+        $this->populate();
+    }
+
 }

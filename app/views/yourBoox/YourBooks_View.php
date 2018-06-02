@@ -119,6 +119,7 @@ function addElementsToYourBoox(jsonResp){
 		//creez div-container
 		var elemDivContainer = document.createElement("div");
 		elemDivContainer.setAttribute("class", "container");
+		elemDivContainer.setAttribute("id", 'container_'+i)
 
 		mySection.appendChild(elemDivContainer);
 
@@ -165,12 +166,15 @@ function addElementsToYourBoox(jsonResp){
 
 		var elemH1Title = document.createElement("h1");
 		elemH1Title.setAttribute("class", "title");
+		elemH1Title.setAttribute("id", 'title_'+i);
 		elemH1Title.innerHTML = jsonResp[i].title;
 		elemDivContainer.appendChild(elemH1Title);
 
 		var elemButton = document.createElement("button");
 		elemButton.setAttribute("class", "button");
 		elemButton.setAttribute("type", "button");
+		elemButton.setAttribute("id", 'button_'+i);
+		elemButton.setAttribute("onclick", 'removeBookByTitle('+'"title_' + i+ '"' +  ', "container_'+ i + '"' +')' );
 		elemButton.innerHTML = "Remove book";
 		elemDivContainer.appendChild(elemButton);
 
@@ -179,6 +183,41 @@ function addElementsToYourBoox(jsonResp){
 	}
 }
 
+function removeBookByTitle(idTag, idContainer){
+	var title = document.getElementById(idTag).innerHTML;
+
+	console.log(title, idContainer);
+
+	let mockReq = new XMLHttpRequest();
+	mockReq.open('POST', 'http://localhost/ProiectTWTEST/PUBLIC/yourBoox/deleteBook');
+
+	mockReq.addEventListener('load', function onLoad(){
+		
+
+		switch(mockReq.status){
+			case 200:
+				console.log("Call ajax success! [SERVER]"+ mockReq.response);
+				deleteElementFromList(idContainer);
+				break;
+			default:
+				break;
+		}
+	});
+
+	mockReq.addEventListener('error', () => {
+		console.error("Something is failed!");
+	});
+
+
+	mockReq.send(title);
+
+}
+
+function deleteElementFromList(idContainer){
+	console.log("Id container : "+ idContainer);
+	var container = document.getElementById(idContainer);
+	container.parentNode.removeChild(container);
+}
 
 </script>
 

@@ -1,7 +1,7 @@
 <?php
 require_once '../app/core/DB.php';
 class YourBooksModel{
-    public function getBooksFromDB($userId){
+    public static function getBooksFromDB($userId){
         $database = DB::getConnection();
         //preiau id cartii din DB 
         $query = "SELECT BOOK_TITLE, BOOK_AUTHORS, BOOK_IMAGE, BOOK_DESCRIPTION 
@@ -34,5 +34,57 @@ class YourBooksModel{
         
         
         $stmt->close();
+    }
+
+    public static function deleteBookFromDB($userId, $title){
+        $database = DB::getConnection();
+        //preiau id cartii din DB 
+        $query = "SELECT YB.BOOK_ID FROM BOOKS B JOIN YOUR_BOOKS YB ON B.BOOK_ID = YB.BOOK_ID WHERE YB.USER_ID = ? AND B.BOOK_TITLE = ?";
+        $stmt = $database->prepare($query);
+    
+
+        if(! $stmt->bind_param("ss", $userId, $title)){
+            return "eroare la bind select ";
+        }
+        if(!$stmt->execute()){
+            return "failled DB";
+        }
+        
+        $stmt->bind_result($bookId); 
+        $stmt->fetch();  
+    
+        $stmt->close();
+
+        $query = "DELETE FROM BOOKS WHERE BOOK_ID = ?";
+        $stmt = $database->prepare($query);
+        if(! $stmt->bind_param("i", $bookId)){
+            return "eroare la bind select ";
+        }
+        if(!$stmt->execute()){
+            return "failled DB";
+        } 
+
+      
+        $stmt->close();
+
+
+        
+
+
+        $query = "DELETE FROM YOUR_BOOKS WHERE BOOK_ID = ?";
+        $stmt = $database->prepare($query);
+        if(! $stmt->bind_param("s", $bookId)){
+            return "eroare la bind select ";
+        }
+        if(!$stmt->execute()){
+            return "failled DB";
+        }
+
+        $stmt->fetch(); 
+        $stmt->close();
+
+        return $bookId;
+       
+        
     }
 }
