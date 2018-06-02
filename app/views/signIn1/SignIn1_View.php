@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="http://localhost/ProiectTWTEST/PUBLIC/CSS/Styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="http://localhost/ProiectTWTEST/PUBLIC/CSS/mediaLogIn.css">
-	<script type="text/javascript" src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/signIn.js"></script>
+	<script type="text/javascript" src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/signIn1.js"></script>
 </head>
 
 <body style="background-image:url(http://localhost/ProiectTWTEST/PUBLIC/IMAGES/bookshelves-wallpaper-1920x1080.jpg); background-repeat: no-repeat;">
@@ -21,7 +21,7 @@
 
 	<form onsubmit="checkFormInput(); return false;">
 		
-		<p class="signInErrorMessage" name="error"></p>
+		<p class="signInErrorMessage" name="serverMessage"></p>
 
 		<input required name="firstName" type="text" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="First Name">  
 		<input required name="lastName" type="text" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Last Name">
@@ -44,7 +44,7 @@
  		
  		<input required name="street" type="text" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Street Address">
  		<input required name="apartment" type="text" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Apartment">
- 		<input requiredname="country" type="text" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Country">
+ 		<input required name="country" type="text" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Country">
  		<input required name="city" type="text" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="City">
  		<input required name="ZIP" type="text" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="ZIP code">
 
