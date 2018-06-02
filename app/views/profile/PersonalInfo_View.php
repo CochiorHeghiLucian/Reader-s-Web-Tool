@@ -100,7 +100,7 @@
  	</footer>
 </body>
 
-<script src="http://localhost/ProiectTWTEST/PUBLIC/JS/profile.js"> </script>
+<script src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/profile.js"> </script>
 
 
 
