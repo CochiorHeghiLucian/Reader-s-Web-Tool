@@ -2,8 +2,8 @@ function checkFormInput(){
     
     document.getElementsByName("submit").disabled=true; 
 
-    var errorParagraph=document.getElementsByName('error')[0];
-    errorParagraph.innerHTML=""; // reseting the error alert paragraph
+    var serverMessage=document.getElementsByName('serverMessage')[0];
+    serverMessage.innerHTML=""; // reseting the error alert paragraph
 
     var frameTitle=document.getElementsByClassName('frameTitle')[0];
     frameTitle.style.display=""; // making visible the frame title
@@ -34,39 +34,41 @@ function checkFormInput(){
 
     var ajax = new XMLHttpRequest();
 
-    ajax.open("POST","http://localhost/ProiectTWTEST/PUBLIC/signIn/validateInput", true);
+    ajax.open("POST","http://localhost/ProiectTWTEST/PUBLIC/signIn1/validateInput", true);
 
     ajax.onreadystatechange = function(){
 
         if(ajax.readyState == 4 && ajax.status == 200){
 
+            serverMessage.style.margin="30px 0 30px 0";
+            frameTitle.style.display="none";
+
             if(ajax.response == "RedirectToSignIn2"){
 
-                // REDIRECT TO SIGN IN 2
+                serverMessage.innerHTML="Please wait ...";
 
+                var signIn2 = "http://localhost/ProiectTWTEST/PUBLIC/signIn2";
+                window.location = signIn2;
             }
             else{
 
                 document.getElementsByName("submit").disabled=false;
 
-                errorParagraph.style.margin="30px 0 30px 0";
-                frameTitle.style.display="none";
-
                 if(ajax.response == "EmailAlreadyInDB"){
 
-                    errorParagraph.innerHTML="Email already used!";
+                    serverMessage.innerHTML="Email already used!";
                 }
                 else if(ajax.response=="EmailNotMatchingRetypedEmail"){
 
-                    errorParagraph.innerHTML="Email/retyped email mismatch!";
+                    serverMessage.innerHTML="Email/retyped email mismatch!";
                 }
                 else if(ajax.response=="PasswordNotMatchingRetypedPassword"){
 
-                    errorParagraph.innerHTML="Password/retyped password mismatch!";
+                    serverMessage.innerHTML="Password/retyped password mismatch!";
                 }
                 else if(ajax.response=="GenderNotSelected"){
 
-                    errorParagraph.innerHTML="Gender not selected!";
+                    serverMessage.innerHTML="Gender not selected!";
                 }
             }
         }

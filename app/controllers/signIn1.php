@@ -1,12 +1,10 @@
 <?php
-
 session_start();
-
-class SignIn extends Controller{
+class SignIn1 extends Controller{
     
     public function index($name=''){
 
-        $this->view("signIn/SignIn1_View");
+        $this->view("signIn1/SignIn1_View");
     }   
 
     public function validateInput(){
@@ -37,7 +35,14 @@ class SignIn extends Controller{
             $_SESSION['firstName'] = $decodedReceivedJSON['firstName'];
             $_SESSION['lastName'] = $decodedReceivedJSON['lastName'];
             $_SESSION['nickName'] = $decodedReceivedJSON['nickName'];
-            $_SESSION['gender'] = $decodedReceivedJSON['male']==true ? "male" : "female";
+
+            if($decodedReceivedJSON['male']==true){
+                $_SESSION['gender'] = "male";
+            }
+            else{
+                $_SESSION['gender'] = "female";
+            }
+
             $_SESSION['dateOfBirth'] = $decodedReceivedJSON['dateOfBirth'];
             $_SESSION['phoneNo'] = $decodedReceivedJSON['phoneNo'];
             $_SESSION['email'] = $decodedReceivedJSON['email'];
@@ -47,12 +52,11 @@ class SignIn extends Controller{
             $_SESSION['country'] = $decodedReceivedJSON['country'];
             $_SESSION['city'] = $decodedReceivedJSON['city'];
             $_SESSION['ZIP'] = $decodedReceivedJSON['ZIP'];
-
-            // how to store the images ???
+            $_SESSION['profilePic'] = $decodedReceivedJSON['profilePic'];
+            $_SESSION['wallpaperPic'] = $decodedReceivedJSON['wallpaperPic'];
 
             echo "RedirectToSignIn2";
-        }
-
+        }   
     }
 } 
 ?>
