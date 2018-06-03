@@ -4,7 +4,7 @@ require_once '../app/models/addBook_model.php';
 class AddBook extends Controller{
 
     public function index(){
-        $this->view("addBook/addToWishList_View");
+        $this->view("addBookToYourBooks/addToYourBooks_View");
 
         // "title" : bookTitle,
 		// "author" : bookAuthor,
