@@ -49,10 +49,10 @@
  		<input required name="ZIP" type="text" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="ZIP code">
 
  		<div class="bookFrame__inputText bookFrame__inputText--SignIn ">Choose profile image
-			 <input name="profilePic" type="file" class="bookFrame__inputText__hideFile bookFrame__inputText__hideFile--SignIn">
+			 <input required name="profilePic" type="file" class="bookFrame__inputText__hideFile bookFrame__inputText__hideFile--SignIn">
 		</div>
 		<div class="bookFrame__inputText bookFrame__inputText--SignIn ">Choose wallpaper image
-			<input name="wallpaperPic" type="file" class="bookFrame__inputText__hideFile bookFrame__inputText__hideFile--SignIn">
+			<input required name="wallpaperPic" type="file" class="bookFrame__inputText__hideFile bookFrame__inputText__hideFile--SignIn">
 		</div>
 		
 		<input type="submit" name="submit" class="bookFrame__inputText bookFrame__inputText--SignIn bookFrame__submitButton_continue bookFrame__submitButton_continue--SignIn">
