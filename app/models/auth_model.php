@@ -90,5 +90,21 @@ class Auth{
 
         return $password;
     } 
+
+    public static function getLargestIdInDB(){
+
+        require_once '../app/core/DB.php';
+
+        $database = DB::getConnection();
+
+        $query="SELECT MAX(USER_ID) FROM USERS";
+        $stmt=$database->prepare($query);
+        $stmt->execute();
+        $stmt->bind_result($largestIdInDB);
+        $stmt->fetch();
+        $stmt->close();
+
+        return $largestIdInDB;
+    }
 }
 ?>

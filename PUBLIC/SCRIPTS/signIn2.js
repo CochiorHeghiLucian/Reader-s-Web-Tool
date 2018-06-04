@@ -27,14 +27,12 @@ function checkFormInput(){
 
         if(ajax.readyState == 4 && ajax.status == 200){
 
-            serverMessage.style.margin="60px 0px 60px 0px";
+            serverMessage.style.margin="60px 0 60px 0";
             frameTitle.style.display="none";
 
-            if(ajax.response == "RedirectToLogIn"){
+            if(ajax.response == "asd"){
 
-                serverMessage.innerHTML="Please wait ...";
-
-                window.location.replace = "http://localhost/ProiectTWTEST/PUBLIC/login";
+                window.location.assign("http://localhost/ProiectTWTEST/PUBLIC/login");
             }
             else{
                 
