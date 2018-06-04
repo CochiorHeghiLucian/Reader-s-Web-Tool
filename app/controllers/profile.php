@@ -18,4 +18,16 @@ class Profile extends Controller{
         $data = json_encode($data);
         echo $data;
     }
+
+    public function getSearchBooks(){
+        $title = file_get_contents('php://input');
+       // echo $title;
+        $data = ProfileModel::getSearchBooksFor($title);
+       // $data = json_encode($data);
+       // print_r( $data);
+        echo json_encode ($data, JSON_FORCE_OBJECT);
+       // header('Location:http://localhost/ProiectTWTEST/PUBLIC/searchBook');
+      //  exit();
+    }
+
 }

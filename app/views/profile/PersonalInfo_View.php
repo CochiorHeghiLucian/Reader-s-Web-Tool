@@ -18,9 +18,8 @@
 			<li class="headerNavigator__ul__li headerNavigator__ul__logOut"><a class="headerNavigator__ul__li__a" href="../HTML/LogIn"> Log Out </a></li>
 		</ul>
 		<form class="headerNavigator__searchForm">
-			<input class="headerNavigator__searchForm__text" type="text" placeholder="Search for booX">
-			<button class="headerNavigator__searchForm__button"> <a href="../HTML/searchPage" 
-				style="text-decoration: none;"> Search </a></button>
+			<input class="headerNavigator__searchForm__text" type="text" placeholder="Search for booX" id="inputSearch">
+			<button type="button" class="headerNavigator__searchForm__button" onclick="searchBook()"> Search </button>
 		</form>
  	</nav>
 
@@ -101,6 +100,48 @@
 </body>
 
 <script src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/profile.js"> </script>
+
+<script>
+	function searchBook(){
+		var title = document.getElementById("inputSearch").value;
+		
+		let mockReq = new XMLHttpRequest();
+		mockReq.open('POST', 'http://localhost/ProiectTWTEST/PUBLIC/profile/getSearchBooks');
+
+		mockReq.addEventListener('load', function onLoad(){
+  	    let jsonResp;
+
+ 	   switch(mockReq.status){
+			case 200:
+			 	jsonResp = JSON.parse(mockReq.response);
+				console.log("Call ajax success! [SERVER]"+ jsonResp);
+				completeSearchBookWithDiv(jsonResp);
+           	 
+           	 break;
+       	 default:
+          	  break;
+   		}
+	});
+
+	mockReq.addEventListener('error', () => {
+    console.error("Something is failed!");
+	});
+
+	mockReq.send(title);
+
+	}
+
+	function completeSearchBookWithDiv(jsonResp){
+		var noJsonElements = Object.keys(jsonResp).length;
+		
+		if(noJsonElements > 0){
+			window.location.href = "http://localhost/ProiectTWTEST/PUBLIC/searchBook";
+		}
+
+	}
+
+
+</script>
 
 
 
