@@ -7,13 +7,6 @@ class SignIn2 extends Controller{
         $this->view("signIn2/SignIn2_View");
     }   
 
-    function console_log( $data ){
-        
-        echo '<script>';
-        echo 'console.log('. json_encode( $data ) .')';
-        echo '</script>';
-    }
-
     public function validateInput(){
 
         $receivedJSON = trim(file_get_contents('php://input'));
@@ -28,10 +21,36 @@ class SignIn2 extends Controller{
             require_once '../app/models/auth_model.php';
             require_once '../app/models/signIn_model.php';
 
+            $largestIdInDB=Auth::getLargestIdInDB();
+            $nextUserIdInDB=$largestIdInDB+1;
+
+            $userName = $_SESSION['nickName'];
+            $firstName = $_SESSION['firstName'];
+            $lastName = $_SESSION['lastName'];
+            $gender = $_SESSION['gender'];
+            $dateOfBirth = $_SESSION['dateOfBirth'];
+            $phoneNumber = $_SESSION['phoneNo'];
+            $emailAddress = $_SESSION['email'];
+            $password = $_SESSION['password'];
+
+            SignIn::insertIntoUsers($nextUserIdInDB, $userName, $firstName, $lastName, $gender, $dateOfBirth, $phoneNumber, $emailAddress, $password);
+
+            $street = $_SESSION['street'];
+            $apartment = $_SESSION['apartment'];
+            $country = $_SESSION['country'];
+            $city = $_SESSION['city'];
+            $ZIP = $_SESSION['ZIP'];
+
+            SignIn::insertIntoUsers_Address($nextUserIdInDB, $street, $apartment, $country, $city, $ZIP);
+
             $authors = $decodedReceivedJSON['authors'];
             $genres = $decodedReceivedJSON['genres'];
             $books = $decodedReceivedJSON['books'];
             $quote = $decodedReceivedJSON['quote'];
+
+            SignIn::insertIntoUsers_Preferences($nextUserIdInDB, $authors, $genres, $books, $quote);
+
+            echo "redirectToLogin";
         }
     }
 } 

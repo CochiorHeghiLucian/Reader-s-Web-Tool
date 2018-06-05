@@ -26,8 +26,8 @@ function checkFormInput(){
         'country':document.getElementsByName('country')[0].value,
         'city':document.getElementsByName('city')[0].value,
         'ZIP':document.getElementsByName('ZIP')[0].value,
-        'profilePic':document.getElementsByName('profilePic')[0].value,
-        'wallpaperPic':document.getElementsByName('wallpaperPic')[0].value
+        //'profilePic':document.getElementsByName('profilePic')[0].value,
+        //'wallpaperPic':document.getElementsByName('wallpaperPic')[0].value
     };
 
     var formInputJSON=JSON.stringify(formInput);

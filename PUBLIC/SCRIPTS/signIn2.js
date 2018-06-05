@@ -30,11 +30,13 @@ function checkFormInput(){
             serverMessage.style.margin="60px 0 60px 0";
             frameTitle.style.display="none";
 
-            if(ajax.response == "asd"){
+            if(ajax.response == "redirectToLogin"){
 
                 window.location.assign("http://localhost/ProiectTWTEST/PUBLIC/login");
             }
             else{
+
+                console.log(ajax.response);
                 
                 document.getElementsByName("submit").disabled=false;
                 

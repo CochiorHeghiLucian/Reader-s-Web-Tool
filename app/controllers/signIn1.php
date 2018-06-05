@@ -52,8 +52,8 @@ class SignIn1 extends Controller{
             $_SESSION['country'] = $decodedReceivedJSON['country'];
             $_SESSION['city'] = $decodedReceivedJSON['city'];
             $_SESSION['ZIP'] = $decodedReceivedJSON['ZIP'];
-            $_SESSION['profilePic'] = $decodedReceivedJSON['profilePic'];
-            $_SESSION['wallpaperPic'] = $decodedReceivedJSON['wallpaperPic'];
+            //$_SESSION['profilePic'] = $decodedReceivedJSON['profilePic'];
+            //$_SESSION['wallpaperPic'] = $decodedReceivedJSON['wallpaperPic'];
 
             echo "RedirectToSignIn2";
         }   
