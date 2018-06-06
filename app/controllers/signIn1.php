@@ -14,7 +14,11 @@ class SignIn1 extends Controller{
         $receivedJSON = trim(file_get_contents("php://input"));
         $decodedReceivedJSON = json_decode($receivedJSON, true);
 
-        if(Auth::validateAccount($decodedReceivedJSON['email'])=="valid"){
+        if(Auth::validateUsername($decodedReceivedJSON['nickName'])=="invalidUserName")
+        {
+            echo "invalidUserName";
+        }
+        else if(Auth::validateAccount($decodedReceivedJSON['email'])=="valid"){
 
             echo "EmailAlreadyInDB";
         }
@@ -52,8 +56,8 @@ class SignIn1 extends Controller{
             $_SESSION['country'] = $decodedReceivedJSON['country'];
             $_SESSION['city'] = $decodedReceivedJSON['city'];
             $_SESSION['ZIP'] = $decodedReceivedJSON['ZIP'];
-            $_SESSION['profilePic'] = $decodedReceivedJSON['profilePic'];
-            $_SESSION['wallpaperPic'] = $decodedReceivedJSON['wallpaperPic'];
+            //$_SESSION['profilePic'] = $decodedReceivedJSON['profilePic'];
+            //$_SESSION['wallpaperPic'] = $decodedReceivedJSON['wallpaperPic'];
 
             echo "RedirectToSignIn2";
         }   

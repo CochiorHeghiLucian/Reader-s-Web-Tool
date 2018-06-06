@@ -15,7 +15,7 @@ class Login extends Controller{
              $email = $_POST['email'];
              $pass = $_POST['password'];
 
-             if($this->validare($email, $pass) == 'valid'){
+             if($this->validare($email,$pass) == 'valid'){
                
                 $id = Auth::getUserIdByEmail($email);
 

@@ -34,7 +34,7 @@
 
  		<input required name="dateOfBirth" type="date" class="bookFrame__inputText bookFrame__inputText--SignIn">
  			
- 		<input required name="phoneNo" type="Phone" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Phone number">
+ 		<input required name="phoneNo" type="tel" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Phone number">
  		<input required name="email" type="email" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Email">
  		<input required name="retypeEmail" type="email" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Retype email">
  		<input required name="password" type="password" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Choose password">

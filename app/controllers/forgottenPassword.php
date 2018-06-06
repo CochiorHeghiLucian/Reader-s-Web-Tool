@@ -6,6 +6,7 @@ class ForgottenPassword extends Controller{
 
         require_once '../app/models/auth_model.php';
         require_once '../app/core/Email.php';
+        require_once '../app/core/Encryption.php'; //!!
 
         $this->view("forgottenPassword/ForgottenPassword_View");
 
@@ -15,49 +16,16 @@ class ForgottenPassword extends Controller{
 
             if(Auth::validateAccount($emailAddress)=="valid"){
 
-                $passwordToBeSent=Email::getPassword($emailAddress);
+                /* Retrieving the forgotten password from the DB  
+                and sending it to the user to his email address: */
 
-                /* Sending the forgotten password of the user 
-                with the email $emailAddress: */
+                $recoveredPassword=Auth::getPassword($emailAddress);
+                $passwordToBeSent=Encryption::decrypt($recoveredPassword); // !!
                 
-                require_once '/opt/lampp/htdocs/ProiectTWTEST/app/PHPMailer/vendor/phpmailer/phpmailer/src/PHPMailer.php';
-                require_once '/opt/lampp/htdocs/ProiectTWTEST/app/PHPMailer/vendor/phpmailer/phpmailer/src/Exception.php';
-                require_once '/opt/lampp/htdocs/ProiectTWTEST/app/PHPMailer/vendor/autoload.php';
-
-                $mail = new PHPMailer\PHPMailer\PHPMailer();
-
-                try { 
-                    /* Server settings: */
-                    
-                    $mail->SMTPDebug = 0;                                 // Enable verbose debug output
-                    $mail->isSMTP();                                      // Set mailer to use SMTP
-                    $mail->Host = "smtp.gmail.com";                       // Specify main and backup SMTP servers
-                    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                    $mail->Username ="BooXWebTool@gmail.com";             // SMTP username
-                    $mail->Password = "BooX_PWD";                         // SMTP password
-                    $mail->SMTPSecure = "ssl";                            // Enable TLS encryption, `ssl` also accepted
-                    $mail->Port = 465;                                    // TCP port to connect to
-
-                    /* Recipients: */
-
-                    $mail->setFrom("betiucciprian@gmail.com");
-                    $mail->addAddress($emailAddress);                     // Add a recipient
-                    $messageBody="<p><strong>Hello!</strong>"."<br>"."<br>"."Your password is:"."<br>"."<br>"."<strong>".$passwordToBeSent."</strong>"."<br>"."<br>"."Respectfully, the BooX team."."</p>";
-
-                    /* Content: */
-    
-                    $mail->isHTML(true);                                  // Set email format to HTML
-                    $mail->Subject = "BooX Account Password Recovery";
-    
-                    $mail->Body=$messageBody ;
-                    $mail->AltBody =strip_tags($messageBody);
-
-                    $mail->send();
-                    
-                } catch (Exception $e){
-                    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-                }
+                $messageBody="<p><strong>Hello!</strong>"."<br>"."<br>"."Your password is:"."<br>"."<br>"."<strong>".$passwordToBeSent."</strong>"."<br>"."<br>"."Respectfully, the BooX team."."</p>";
                 
+                Email::sendEmail($emailAddress, $messageBody);
+
                 header('Location:http://localhost/ProiectTWTEST/PUBLIC/login');
                 exit();
             }

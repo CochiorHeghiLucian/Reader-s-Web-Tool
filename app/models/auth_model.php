@@ -57,6 +57,28 @@ class Auth{
         $stmt->close();
     }
 
+    public static function validateUsername($userName){
+
+        require_once '../app/core/DB.php';
+
+        $database = DB::getConnection();
+
+        $query = "SELECT COUNT(*) FROM `USERS` WHERE `USER_NAME`=?";
+        $stmt = $database->prepare($query);
+        $stmt->bind_param("s", $userName);
+        $stmt->execute();
+        $stmt->bind_result($userNameInDBCounter);
+        $stmt->fetch();      
+    
+        if($userNameInDBCounter > 0){
+            return "invalidUserName";
+        }else{
+            return "validUserName";
+        }
+    
+        $stmt->close();
+    }
+
    public static function getUserIdByEmail($email){
 
         require_once '../app/core/DB.php';
@@ -73,6 +95,38 @@ class Auth{
         return $userId;
         
         $stmt->close();
+    }
+
+    public static function getPassword($email){
+
+        require_once '../app/core/DB.php';
+
+        $database = DB::getConnection();
+
+        $query="SELECT `PASSWORD` FROM `USERS` WHERE `EMAIL_ADDR`=?";
+        $stmt=$database->prepare($query);
+        $stmt->bind_param("s",$email);
+        $stmt->execute();
+        $stmt->bind_result($password);
+        $stmt->fetch();
+
+        return $password;
+    } 
+
+    public static function getLargestIdInDB(){
+
+        require_once '../app/core/DB.php';
+
+        $database = DB::getConnection();
+
+        $query="SELECT MAX(USER_ID) FROM USERS";
+        $stmt=$database->prepare($query);
+        $stmt->execute();
+        $stmt->bind_result($largestIdInDB);
+        $stmt->fetch();
+        $stmt->close();
+
+        return $largestIdInDB;
     }
 }
 ?>
