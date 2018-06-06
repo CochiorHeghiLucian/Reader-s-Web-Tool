@@ -20,12 +20,15 @@ class Profile extends Controller{
     }
 
     public function getSearchBooks(){
+        $userId = $_SESSION['userId'];
         $title = file_get_contents('php://input');
        // echo $title;
-        $data = ProfileModel::getSearchBooksFor($title);
-       // $data = json_encode($data);
+        $data = ProfileModel::getSearchBooksFor($title, $userId);
+        $data = json_encode($data);
        // print_r( $data);
-        echo json_encode ($data, JSON_FORCE_OBJECT);
+        $_SESSION['bookSearchTitle'] = $title;
+        $_SESSION['booksFound'] = $data;
+        
        // header('Location:http://localhost/ProiectTWTEST/PUBLIC/searchBook');
       //  exit();
     }

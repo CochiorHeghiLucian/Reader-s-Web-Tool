@@ -113,9 +113,10 @@
 
  	   switch(mockReq.status){
 			case 200:
-			 	jsonResp = JSON.parse(mockReq.response);
-				console.log("Call ajax success! [SERVER]"+ jsonResp);
-				completeSearchBookWithDiv(jsonResp);
+			 	//jsonResp = JSON.parse(mockReq.response);
+				 console.log("Call ajax success! S-a trimis titlul" + mockReq.response );
+				//completeSearchBookWithDiv(jsonResp);
+				window.location.href = "http://localhost/ProiectTWTEST/PUBLIC/searchBook";
            	 
            	 break;
        	 default:
@@ -131,14 +132,6 @@
 
 	}
 
-	function completeSearchBookWithDiv(jsonResp){
-		var noJsonElements = Object.keys(jsonResp).length;
-		
-		if(noJsonElements > 0){
-			window.location.href = "http://localhost/ProiectTWTEST/PUBLIC/searchBook";
-		}
-
-	}
 
 
 </script>
