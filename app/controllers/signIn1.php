@@ -14,7 +14,11 @@ class SignIn1 extends Controller{
         $receivedJSON = trim(file_get_contents("php://input"));
         $decodedReceivedJSON = json_decode($receivedJSON, true);
 
-        if(Auth::validateAccount($decodedReceivedJSON['email'])=="valid"){
+        if(Auth::validateUsername($decodedReceivedJSON['nickName'])=="invalidUserName")
+        {
+            echo "invalidUserName";
+        }
+        else if(Auth::validateAccount($decodedReceivedJSON['email'])=="valid"){
 
             echo "EmailAlreadyInDB";
         }

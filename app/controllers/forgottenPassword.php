@@ -6,7 +6,7 @@ class ForgottenPassword extends Controller{
 
         require_once '../app/models/auth_model.php';
         require_once '../app/core/Email.php';
-        require_once '../app/core/Encryption.php';
+        require_once '../app/core/Encryption.php'; //!!
 
         $this->view("forgottenPassword/ForgottenPassword_View");
 
@@ -20,7 +20,7 @@ class ForgottenPassword extends Controller{
                 and sending it to the user to his email address: */
 
                 $recoveredPassword=Auth::getPassword($emailAddress);
-                $passwordToBeSent=Encryption::decrypt($recoveredPassword);
+                $passwordToBeSent=Encryption::decrypt($recoveredPassword); // !!
                 
                 $messageBody="<p><strong>Hello!</strong>"."<br>"."<br>"."Your password is:"."<br>"."<br>"."<strong>".$passwordToBeSent."</strong>"."<br>"."<br>"."Respectfully, the BooX team."."</p>";
                 

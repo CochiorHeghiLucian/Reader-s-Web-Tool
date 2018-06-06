@@ -54,7 +54,11 @@ function checkFormInput(){
 
                 document.getElementsByName("submit").disabled=false;
 
-                if(ajax.response == "EmailAlreadyInDB"){
+                if(ajax.response == "invalidUserName")
+                {
+                    serverMessage.innerHTML = "User name already used!";
+                }
+                else if(ajax.response == "EmailAlreadyInDB"){
 
                     serverMessage.innerHTML="Email already used!";
                 }

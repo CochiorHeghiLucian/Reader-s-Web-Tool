@@ -57,6 +57,28 @@ class Auth{
         $stmt->close();
     }
 
+    public static function validateUsername($userName){
+
+        require_once '../app/core/DB.php';
+
+        $database = DB::getConnection();
+
+        $query = "SELECT COUNT(*) FROM `USERS` WHERE `USER_NAME`=?";
+        $stmt = $database->prepare($query);
+        $stmt->bind_param("s", $userName);
+        $stmt->execute();
+        $stmt->bind_result($userNameInDBCounter);
+        $stmt->fetch();      
+    
+        if($userNameInDBCounter > 0){
+            return "invalidUserName";
+        }else{
+            return "validUserName";
+        }
+    
+        $stmt->close();
+    }
+
    public static function getUserIdByEmail($email){
 
         require_once '../app/core/DB.php';

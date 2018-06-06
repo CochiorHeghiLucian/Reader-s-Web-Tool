@@ -34,7 +34,7 @@
 
  		<input required name="dateOfBirth" type="date" class="bookFrame__inputText bookFrame__inputText--SignIn">
  			
- 		<input required name="phoneNo" type="Phone" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Phone number">
+ 		<input required name="phoneNo" type="tel" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Phone number">
  		<input required name="email" type="email" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Email">
  		<input required name="retypeEmail" type="email" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Retype email">
  		<input required name="password" type="password" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Choose password">
@@ -49,10 +49,10 @@
  		<input required name="ZIP" type="text" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="ZIP code">
 
  		<div class="bookFrame__inputText bookFrame__inputText--SignIn ">Choose profile image
-			 <input  name="profilePic" type="file" class="bookFrame__inputText__hideFile bookFrame__inputText__hideFile--SignIn">
+			 <input name="profilePic" type="file" class="bookFrame__inputText__hideFile bookFrame__inputText__hideFile--SignIn">
 		</div>
 		<div class="bookFrame__inputText bookFrame__inputText--SignIn ">Choose wallpaper image
-			<input  name="wallpaperPic" type="file" class="bookFrame__inputText__hideFile bookFrame__inputText__hideFile--SignIn">
+			<input name="wallpaperPic" type="file" class="bookFrame__inputText__hideFile bookFrame__inputText__hideFile--SignIn">
 		</div>
 		
 		<input type="submit" name="submit" class="bookFrame__inputText bookFrame__inputText--SignIn bookFrame__submitButton_continue bookFrame__submitButton_continue--SignIn">
