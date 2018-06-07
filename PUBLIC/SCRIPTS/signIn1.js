@@ -44,11 +44,8 @@ function checkFormInput(){
             frameTitle.style.display="none";
 
             if(ajax.response == "RedirectToSignIn2"){
-
-                serverMessage.innerHTML="Please wait ...";
-
-                var signIn2 = "http://localhost/ProiectTWTEST/PUBLIC/signIn2";
-                window.location = signIn2;
+                
+                window.location.assign("http://localhost/ProiectTWTEST/PUBLIC/signIn2");
             }
             else{
 
@@ -68,7 +65,7 @@ function checkFormInput(){
                 }
                 else if(ajax.response=="PasswordNotMatchingRetypedPassword"){
 
-                    serverMessage.innerHTML="Password/retyped password mismatch!";
+                    serverMessage.innerHTML="Password/password confirm mismatch!";
                 }
                 else if(ajax.response=="GenderNotSelected"){
 

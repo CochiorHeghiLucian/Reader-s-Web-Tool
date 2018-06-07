@@ -36,8 +36,8 @@
  			
  		<input required name="phoneNo" type="tel" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Phone number">
  		<input required name="email" type="email" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Email">
- 		<input required name="retypeEmail" type="email" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Retype email">
- 		<input required name="password" type="password" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Choose password">
+ 		<input required name="retypeEmail" type="email" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Confirm email">
+ 		<input required name="password" type="password" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Password">
  		<input required name="retypePassword" type="password" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Confirm password">
 
  		<div class="footerSeparator footerSeparator--form footerSeparator--form--SignIn"></div>

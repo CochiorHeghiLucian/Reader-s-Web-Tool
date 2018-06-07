@@ -9,7 +9,10 @@ class SignIn{
         
         $query = "INSERT INTO USERS (USER_ID, USER_NAME, FIRST_NAME, LAST_NAME, GENDER, DATE_OF_BIRTH, PHONE_NUMBER, EMAIL_ADDR, PASSWORD) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $database->prepare($query);
-        $stmt->bind_param("sssssssss", $userId, $userName, $firstName, $lastName, $gender, $dateOfBirth, $phoneNumber, $emailAddress, Encryption::encrypt($password));
+
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+        $stmt->bind_param("sssssssss", $userId, $userName, $firstName, $lastName, $gender, $dateOfBirth, $phoneNumber, $emailAddress, $hashedPassword);
 
         if(!$stmt->execute()){
             return "failled the users DB insertion";

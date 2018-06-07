@@ -50,7 +50,7 @@ class SignIn2 extends Controller{
 
             SignIn::insertIntoUsers_Preferences($nextUserIdInDB, $authors, $genres, $books, $quote);
 
-            echo "redirectToLogin";
+            echo "redirectToLogIn";
         }
     }
 } 
