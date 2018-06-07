@@ -39,7 +39,7 @@ class MailSender extends Controller{
 
     }
 
-    public static function accept($userName1 = '', $userName2 = '',$titlu1='', $titlu2=''){
+    public function accept($userName1 = '', $userName2 = '',$titlu1='', $titlu2=''){
         //incarc un view
         $userId1 = mailSenderModel::getIdByUserName($userName1);
         $userId2 = mailSenderModel::getIdByUserName($userName2);
@@ -99,7 +99,7 @@ class MailSender extends Controller{
         return $msg;
     }
 
-    public static function refuz($userName1='', $userName2=''){
+    public function refuz($userName1='', $userName2=''){
         $userEmail1 = mailSenderModel::getMailByUserName($userName1);
         $userEmail2 = mailSenderModel::getMailByUserName($userName2);
 
