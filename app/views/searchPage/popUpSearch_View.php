@@ -18,7 +18,7 @@
 			<li class="headerNavigator__ul__li"><a class="headerNavigator__ul__li__a" href="http://localhost/ProiectTWTEST/PUBLIC/yourBoox"> Your booX </a></li>
             <li class="headerNavigator__ul__li"><a class="headerNavigator__ul__li__a" href="http://localhost/ProiectTWTEST/PUBLIC/booxWishlist"> BooX Wishlist </a></li>
             <li onclick="goBack()" class="headerNavigator__ul__li cur"><a class="headerNavigator__ul__li__a cur" > Back to search </a></li>
-			<li class="headerNavigator__ul__li headerNavigator__ul__logOut"><a class="headerNavigator__ul__li__a " > Log Out </a></li>
+			<li class="headerNavigator__ul__li headerNavigator__ul__logOut"><a class="headerNavigator__ul__li__a " href="http://localhost/ProiectTWTEST/PUBLIC/logOut"> Log Out </a></li>
 			<li class="headerNavigator__ul__li headerNavigator__ul__logOut ">
 				<a class="headerNavigator__ul__li__a headerNavigator__ul__li__a--home headerNavigator__ul__home " href="http://localhost/ProiectTWTEST/PUBLIC/profile">
 					<i class="fa fa-home" style="font-size:23px;color:#A40A3C"></i>
@@ -165,16 +165,56 @@
 		elemButton.setAttribute("class", "button");
 		elemButton.setAttribute("type", "button");
 		elemButton.setAttribute("id", 'button_'+i);
-		elemButton.setAttribute("onclick", "displayUserBooks("+  "'" + i + "'" +")");
-		elemButton.innerHTML = "Choose book";
+		elemButton.setAttribute("onclick", "sendMailForChangingBooks(" + i + "," + "'" + jsonResp.bookTitle + "'" +")");
+		elemButton.innerHTML = "Choose book"; 
 		elemDivContainer.appendChild(elemButton);
 
 		var elementParagrafTitle = document.createElement("p");
 		elementParagrafTitle.setAttribute('class', 'nickname');
+		elementParagrafTitle.setAttribute('id', 'username_'+ i);
 		elementParagrafTitle.innerHTML = jsonResp.username;
 		elemDivContainer.appendChild(elementParagrafTitle);
 	}
 }
+
+	function sendMailForChangingBooks(index, userTitle){
+		var name = document.getElementById("username_"+ index).innerHTML;
+		var title = document.getElementById("title_" + index).innerHTML;
+		var changeBtn = document.getElementById("button_" + index);
+		changeBtn.disabled = true;
+		changeBtn.innerHTML = "Request sent";
+		console.log("Test-> "+name+ "-> "+title);
+		//trimit ajax pentru trimitere mail confirmare name, title
+
+		let mockReq = new XMLHttpRequest();
+		mockReq.open('POST', 'http://localhost/ProiectTWTEST/PUBLIC/mailSender/sendMail');
+
+		mockReq.addEventListener('load', function onLoad(){
+    	//let jsonResp = JSON.parse(mockReq.response);
+
+    	switch(mockReq.status){
+      	  case 200:
+        	    console.log("Call ajax success! [SERVER - Mail]"+ mockReq.response);
+       	     	//dispayMessage(mockReq.response);
+           	 break;
+     	   default:
+           	 break;
+   		 }
+		});
+
+		mockReq.addEventListener('error', () => {
+   		console.error("Something is failed!");
+		});
+
+	let payload = {
+    	"title" : title,
+		"name" : name,
+		"userTitle" : userTitle			
+	}
+
+	mockReq.send(JSON.stringify(payload));
+
+	}
 
 
 </script>

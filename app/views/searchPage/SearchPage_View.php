@@ -17,7 +17,7 @@
 		<ul class="headerNavigator__ul">
 			<li class="headerNavigator__ul__li"><a class="headerNavigator__ul__li__a" href="http://localhost/ProiectTWTEST/PUBLIC/yourBoox"> Your booX </a></li>
 			<li class="headerNavigator__ul__li"><a class="headerNavigator__ul__li__a" href="http://localhost/ProiectTWTEST/PUBLIC/booxWishlist"> BooX Wishlist </a></li>
-			<li class="headerNavigator__ul__li headerNavigator__ul__logOut"><a class="headerNavigator__ul__li__a" href="../HTML/LogIn"> Log Out </a></li>
+			<li class="headerNavigator__ul__li headerNavigator__ul__logOut"><a class="headerNavigator__ul__li__a" href="http://localhost/ProiectTWTEST/PUBLIC/logOut"> Log Out </a></li>
 			<li class="headerNavigator__ul__li headerNavigator__ul__logOut ">
 				<a class="headerNavigator__ul__li__a headerNavigator__ul__li__a--home headerNavigator__ul__home " href="http://localhost/ProiectTWTEST/PUBLIC/profile">
 					<i class="fa fa-home" style="font-size:23px;color:#A40A3C"></i>
@@ -26,9 +26,8 @@
 			</li>
 		</ul>
 		<form class="headerNavigator__searchForm">
-			<input class="headerNavigator__searchForm__text" type="text" placeholder="Search for booX">
-			<button class="headerNavigator__searchForm__button"> <a href="../HTML/searchPage" style="text-decoration:none;"> Search </a></button>
-		</form>
+			<input class="headerNavigator__searchForm__text" type="text" placeholder="Search for booX" id="inputSearch">
+			<button type="button" class="headerNavigator__searchForm__button" onclick="searchBook()"> Search </button>
  	</nav>
 
  		<section class="topFrame__cover uni--absolute topFrame__cover--noBorder" id="bookContainer">
@@ -115,6 +114,7 @@
 </div>
 
 </body>
+<script src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/search.js"> </script>
 
 <script>
 	function getSeachBooks(){
@@ -233,7 +233,7 @@
 		elemButton.setAttribute("class", "button");
 		elemButton.setAttribute("type", "button");
 		elemButton.setAttribute("id", 'button_'+i);
-		elemButton.setAttribute("onclick", "displayUserBooks("+  "'" + i + "'" +")");
+		elemButton.setAttribute("onclick", "displayUserBooks("+  "'" + i + "'" +"," +"'" + jsonResp[i].title + "'" +")");
 		elemButton.innerHTML = "Choose book";
 		elemDivContainer.appendChild(elemButton);
 
@@ -250,7 +250,7 @@
 	}
 }
 
-function displayUserBooks(index){	
+function displayUserBooks(index, title){	
 		
 		let mockReq = new XMLHttpRequest();
 		mockReq.open('POST', 'http://localhost/ProiectTWTEST/PUBLIC/searchList/getBooksToDisplay');
@@ -277,7 +277,13 @@ function displayUserBooks(index){
 
 
 	//console.log("TEST:_> "+index);
-	mockReq.send(index);
+	let payload = {
+    	"title" : title,
+   	 	"index" : index
+	}
+
+	mockReq.send(JSON.stringify(payload));
+	
 	//JSON.stringify(payload)
 
 	

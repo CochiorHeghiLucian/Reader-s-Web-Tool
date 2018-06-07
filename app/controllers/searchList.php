@@ -10,8 +10,15 @@ class searchList extends Controller{
 
     public function getBooksToDisplay(){
   
-        $index = file_get_contents('php://input');
+         //title, index
+         $jsonData = file_get_contents('php://input');
+         $jsonData = json_decode($jsonData);
+         
+         $index = $jsonData->index;
+         $title = $jsonData->title;
+ 
         $_SESSION['index'] = $index;
+        $_SESSION['bookTitle'] = $title;
 
         // $jsonBooks = json_decode($_SESSION['booksFound']);
        
@@ -20,14 +27,16 @@ class searchList extends Controller{
     }
 
     public function getBooksToDisplay1(){
+       
         $index = $_SESSION['index'];
+        $title = $_SESSION['bookTitle'];
 
         $jsonBooks = json_decode($_SESSION['booksFound']);
 
         $username = $jsonBooks[$index]->username;
         $afisare = $jsonBooks[$index]->afisare;
        
-        $resultSet = array('username' =>$username, 'afisare' => $afisare);
+        $resultSet = array('bookTitle' => $title, 'username' =>$username, 'afisare' => $afisare);
          echo json_encode($resultSet);
     }
 
