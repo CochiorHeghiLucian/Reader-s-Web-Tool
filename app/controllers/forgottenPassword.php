@@ -6,7 +6,6 @@ class ForgottenPassword extends Controller{
 
         require_once '../app/models/auth_model.php';
         require_once '../app/core/Email.php';
-        require_once '../app/core/Encryption.php'; //!!
 
         $this->view("forgottenPassword/ForgottenPassword_View");
 
@@ -15,14 +14,8 @@ class ForgottenPassword extends Controller{
             $emailAddress = $_POST['email'];
 
             if(Auth::validateAccount($emailAddress)=="valid"){
-
-                /* Retrieving the forgotten password from the DB  
-                and sending it to the user to his email address: */
-
-                $recoveredPassword=Auth::getPassword($emailAddress);
-                $passwordToBeSent=Encryption::decrypt($recoveredPassword); // !!
                 
-                $messageBody="<p><strong>Hello!</strong>"."<br>"."<br>"."Your password is:"."<br>"."<br>"."<strong>".$passwordToBeSent."</strong>"."<br>"."<br>"."Respectfully, the BooX team."."</p>";
+                $messageBody="<p><strong>Hello!</strong>"."<br>"."<br>"."Ooops .. it seems like you forgot your BooX account password."."<br>"."<br>"."Please change your password at the following link:"."<br>"."<br>"."http://localhost/ProiectTWTEST/PUBLIC/changePassword"."<br>"."<br>"."Respectfully, the BooX team."."</p>";
                 
                 Email::sendEmail($emailAddress, $messageBody);
 

@@ -10,37 +10,41 @@ function checkFormInput(){
 
     var formInput={
 
-        'authors':document.getElementsByName('authors')[0].value,
-        'genres':document.getElementsByName('genres')[0].value,
-        'books':document.getElementsByName('books')[0].value,
-        'quote':document.getElementsByName('quote')[0].value,
-        'termsOfUseCheckbox':document.getElementsByName('agreeOrNot')[0].checked
+        'email':document.getElementsByName('email')[0].value,
+        'changePassword':document.getElementsByName('password')[0].value,
+        'retypePassword':document.getElementsByName('retypePassword')[0].value
     };
 
     var formInputJSON=JSON.stringify(formInput);
 
     var ajax = new XMLHttpRequest();
 
-    ajax.open("POST","http://localhost/ProiectTWTEST/PUBLIC/signIn2/validateInput", true);
+    ajax.open("POST","http://localhost/ProiectTWTEST/PUBLIC/changePassword/validateInput", true);
 
     ajax.onreadystatechange = function(){
 
         if(ajax.readyState == 4 && ajax.status == 200){
 
-            serverMessage.style.margin="60px 0 60px 0";
+            serverMessage.style.margin="30px 0 30px 0";
             frameTitle.style.display="none";
 
-            if(ajax.response == "redirectToLogIn"){
+            if(ajax.response == "RedirectToLogIn"){
+
+                serverMessage.innerHTML = "Please wait ...";
 
                 window.location.assign("http://localhost/ProiectTWTEST/PUBLIC/login");
             }
             else{
-                
-                document.getElementsByName("submit").disabled=false;
-                
-                if(ajax.response == "TermsOfUseNotChecked"){
 
-                    serverMessage.innerHTML="Terms of use not checked!";
+                document.getElementsByName("submit").disabled=false;
+
+                if(ajax.response == "PasswordNotMatchingRetypedPassword")
+                {
+                    serverMessage.innerHTML="Password/password confirm mismatch!";
+                }
+                else if(ajax.response == "invalidEmail"){
+
+                    serverMessage.innerHTML = "Email address not recognized."
                 }
             }
         }

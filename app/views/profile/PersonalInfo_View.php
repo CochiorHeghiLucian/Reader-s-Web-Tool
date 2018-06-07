@@ -59,33 +59,6 @@
  			</ul>
 
  		</div>
-
-
-
-
-
-
-	<!-- <div class="aboutUser__tab aboutUser__tab__personalInfoPreferences none" id="profil_preference">
- 			<ul class="aboutUser__tab__personalInfoPreferences__ul">
- 				<li class="aboutUser__personalInfoPreferences__ul__li"> 
- 					<button type="button" class="aboutUser__personalInfoPreferences__ul__li__a" > Personal Info   
- 				</li>
- 				<li class="aboutUser__personalInfoPreferences__ul__li"> 
- 					<button type="button" class="aboutUser__personalInfoPreferences__ul__li__a" onclick="hideDiv('profil_personal_info');displayDiv('profil_preference');" > Preferences </a>  
- 				</li>
- 			</ul>
- 			<ul class="aboutUser_ul">
- 				<li class="aboutUser_ul_li"><i class="fa fa-group" style="font-size:30px;color:#A40A3C"></i> Favorite authors: </li>
- 				<li class="aboutUser_ul_li"><i class="fa fa-pagelines" style="font-size:30px;color:#A40A3C"></i> Favorite genres: </li>
- 				<li class="aboutUser_ul_li"><i class="fa fa-book" style="font-size:30px;color:#A40A3C"></i> Prefered books: </li>
- 			</ul>
- 		</div> -->
-
-
-
-
-
-
  		<div class="aboutUser__tab aboutUser__tab__favoriteQuote">
  			<p class="aboutUser__tab__favoriteQuote__p" id="quote">  </p>
  		</div>

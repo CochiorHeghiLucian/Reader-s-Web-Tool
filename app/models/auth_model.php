@@ -4,6 +4,7 @@ class Auth{
     public static function validateUser($email, $password){
         
         require_once '../app/core/DB.php';
+        require_once '../app/core/Encryption.php';
 
         $database = DB::getConnection();
 
@@ -19,20 +20,21 @@ class Auth{
             return "invalidEmail";
         }
 
-        $query = "SELECT  COUNT(*) FROM `USERS` WHERE `EMAIL_ADDR`=? AND `PASSWORD`=?";
+        $query = "SELECT `PASSWORD` FROM `USERS` WHERE `EMAIL_ADDR`=?";
         $stmt = $database->prepare($query);
-        $stmt->bind_param("ss", $email, $password);
+        $stmt->bind_param("s",$email);
         $stmt->execute();
-        $stmt->bind_result($count);
-        $stmt->fetch();      
-    
-        if($count < 1){
-            return "invalidPassword";
-        }else{
-            return 'valid';
+        $stmt->bind_result($hashedPassword);
+        $stmt->fetch();
+
+        if(password_verify($password, $hashedPassword)){
+
+            return "valid";
         }
-        
-        $stmt->close();
+        else{
+
+            return "invalidPassword";
+        }
     }
 
     public static function validateAccount($email){
@@ -97,22 +99,6 @@ class Auth{
         $stmt->close();
     }
 
-    public static function getPassword($email){
-
-        require_once '../app/core/DB.php';
-
-        $database = DB::getConnection();
-
-        $query="SELECT `PASSWORD` FROM `USERS` WHERE `EMAIL_ADDR`=?";
-        $stmt=$database->prepare($query);
-        $stmt->bind_param("s",$email);
-        $stmt->execute();
-        $stmt->bind_result($password);
-        $stmt->fetch();
-
-        return $password;
-    } 
-
     public static function getLargestIdInDB(){
 
         require_once '../app/core/DB.php';
@@ -127,6 +113,22 @@ class Auth{
         $stmt->close();
 
         return $largestIdInDB;
+    }
+
+    public static function changePassword($email, $changedPassword){
+
+        require_once '../app/core/DB.php';
+
+        $database = DB::getConnection();
+
+        $query="UPDATE `USERS` SET `PASSWORD`=? WHERE `EMAIL_ADDR`=?";
+        $stmt=$database->prepare($query);
+
+        $hashedPassword = password_hash($changedPassword, PASSWORD_BCRYPT);
+        
+        $stmt->bind_param("ss", $hashedPassword, $email);
+        $stmt->execute();
+        $stmt->close();
     }
 }
 ?>

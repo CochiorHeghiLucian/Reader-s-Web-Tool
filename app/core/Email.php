@@ -29,7 +29,7 @@ class Email{
         /* Content: */
 
         $mail->isHTML(true);                                  // Set email format to HTML
-        $mail->Subject = "BooX Account Password Recovery";
+        $mail->Subject = "BooX";
 
         $mail->Body=$messageBody ;
         $mail->AltBody =strip_tags($messageBody);
