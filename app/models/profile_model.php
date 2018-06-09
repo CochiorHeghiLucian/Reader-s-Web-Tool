@@ -1,4 +1,5 @@
 <?php
+require_once '/opt/lampp/htdocs/ProiectTWTEST/app/core/DB.php';
 class ProfileModel{
 
     public static function getPersonalInfoData($userId){
@@ -17,7 +18,7 @@ class ProfileModel{
 
     private static function getQuote($userId){
 
-        require_once '../app/core/DB.php';
+        
 
         $database = DB::getConnection();
      
@@ -35,7 +36,7 @@ class ProfileModel{
     
     private static function getRating($userId){
 
-        require_once '../app/core/DB.php';
+      
 
         $database = DB::getConnection();
      
@@ -53,7 +54,7 @@ class ProfileModel{
 
     private static function getTwitterAccount($userId){
 
-        require_once '../app/core/DB.php';
+      
 
         $database = DB::getConnection();
      
@@ -71,7 +72,7 @@ class ProfileModel{
 
     private static function getFacebookAccount($userId){
 
-        require_once '../app/core/DB.php';
+       
 
         $database = DB::getConnection();
      
@@ -89,7 +90,7 @@ class ProfileModel{
 
     private static function getLocation($userId){
 
-        require_once '../app/core/DB.php';
+      
 
         $database = DB::getConnection();
      
@@ -109,7 +110,7 @@ class ProfileModel{
 
     private static function getAuthors($userId){
 
-        require_once '../app/core/DB.php';
+       
 
         $database = DB::getConnection();
      
@@ -127,7 +128,7 @@ class ProfileModel{
 
     private static function getGenres($userId){
 
-        require_once '../app/core/DB.php';
+        
 
         $database = DB::getConnection();
      
@@ -145,7 +146,7 @@ class ProfileModel{
 
     private static function getBooks($userId){
 
-        require_once '../app/core/DB.php';
+        
 
         $database = DB::getConnection();
      
@@ -162,7 +163,7 @@ class ProfileModel{
     }
 
     public static function getSearchBooksFor($title, $userId1){
-        require_once '../app/core/DB.php';
+        
         $database = DB::getConnection();
 
         //preiau id cartii din DB 

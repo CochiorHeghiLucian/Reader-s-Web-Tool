@@ -1,5 +1,6 @@
 <?php
-require_once '../app/core/DB.php';
+//require_once '../app/core/DB.php';
+require_once '/opt/lampp/htdocs/ProiectTWTEST/app/core/DB.php';
 class YourBooksModel{
     public static function getBooksFromDB($userId){
         $database = DB::getConnection();
@@ -87,4 +88,37 @@ class YourBooksModel{
        
         
     }
+
+     public static function getIdByUserName($userName){
+        $database = DB::getConnection();
+         
+            $query = "SELECT `USER_ID` FROM `USERS` WHERE `USER_NAME`=?";
+            $stmt = $database->prepare($query);
+            $stmt->bind_param("s", $userName);
+            $stmt->execute();
+            $stmt->bind_result($userId);
+            $stmt->fetch(); 
+            
+            return $userId;
+            
+            $stmt->close();
+    }
+
+    public static function getIdByEmail($userEmail){
+        $database = DB::getConnection();
+         
+            $query = "SELECT `USER_ID` FROM `USERS` WHERE `EMAIL_ADDR`=?";
+            $stmt = $database->prepare($query);
+            $stmt->bind_param("s", $userEmail);
+            $stmt->execute();
+            $stmt->bind_result($userId);
+            $stmt->fetch(); 
+            
+            return $userId;
+            
+            $stmt->close();
+    }
+
+
+
 }

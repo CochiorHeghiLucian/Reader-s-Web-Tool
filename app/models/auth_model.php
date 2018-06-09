@@ -1,10 +1,10 @@
 <?php
+require_once '/opt/lampp/htdocs/ProiectTWTEST/app/core/DB.php';
 class Auth{
 
     public static function validateUser($email, $password){
         
-        require_once '../app/core/DB.php';
-        require_once '../app/core/Encryption.php';
+      
 
         $database = DB::getConnection();
 

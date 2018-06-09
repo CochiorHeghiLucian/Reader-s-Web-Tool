@@ -1,5 +1,5 @@
 <?php
-require_once '../app/core/DB.php';
+require_once '/opt/lampp/htdocs/ProiectTWTEST/app/core/DB.php';
 class BooxWishlistModel{
     
     public static function getBooksFromDB($userId){
