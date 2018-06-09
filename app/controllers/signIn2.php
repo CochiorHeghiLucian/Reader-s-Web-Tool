@@ -22,8 +22,16 @@ class SignIn2 extends Controller{
             require_once '../app/models/signIn_model.php';
 
             $largestIdInDB=Auth::getLargestIdInDB();
-            $nextUserIdInDB=$largestIdInDB+1;
 
+            if($largestIdInDB<1 || $largestIdInDB == null)
+            {
+                $nextUserIdInDB=1;
+            }
+            else{
+
+                $nextUserIdInDB=$largestIdInDB+1;
+            }
+            
             $userName = $_SESSION['nickName'];
             $firstName = $_SESSION['firstName'];
             $lastName = $_SESSION['lastName'];
@@ -49,6 +57,11 @@ class SignIn2 extends Controller{
             $quote = $decodedReceivedJSON['quote'];
 
             SignIn::insertIntoUsers_Preferences($nextUserIdInDB, $authors, $genres, $books, $quote);
+
+            // $facebookAccount = $decodedReceivedJSON['facebook'];
+            // $twitterAccount = $decodedReceivedJSON['twitter'];
+
+            // SignIn::insertIntoUsers_Personal_Info($nextUserIdInDB, $facebookAccount, $twitterAccount);
 
             echo "redirectToLogIn";
         }

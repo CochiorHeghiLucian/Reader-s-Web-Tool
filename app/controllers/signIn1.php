@@ -41,9 +41,11 @@ class SignIn1 extends Controller{
             $_SESSION['nickName'] = $decodedReceivedJSON['nickName'];
 
             if($decodedReceivedJSON['male']==true){
+
                 $_SESSION['gender'] = "male";
             }
             else{
+                
                 $_SESSION['gender'] = "female";
             }
 
@@ -56,8 +58,8 @@ class SignIn1 extends Controller{
             $_SESSION['country'] = $decodedReceivedJSON['country'];
             $_SESSION['city'] = $decodedReceivedJSON['city'];
             $_SESSION['ZIP'] = $decodedReceivedJSON['ZIP'];
-            //$_SESSION['profilePic'] = $decodedReceivedJSON['profilePic'];
-            //$_SESSION['wallpaperPic'] = $decodedReceivedJSON['wallpaperPic'];
+            $_SESSION['facebook'] = $decodedReceivedJSON['facebook'];
+            $_SESSION['twitter'] = $decodedReceivedJSON['twitter'];
 
             echo "RedirectToSignIn2";
         }   

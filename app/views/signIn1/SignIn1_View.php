@@ -47,13 +47,8 @@
  		<input required name="country" type="text" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="Country">
  		<input required name="city" type="text" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="City">
  		<input required name="ZIP" type="text" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder="ZIP code">
-
- 		<div class="bookFrame__inputText bookFrame__inputText--SignIn ">Choose profile image
-			 <input name="profilePic" type="file" class="bookFrame__inputText__hideFile bookFrame__inputText__hideFile--SignIn">
-		</div>
-		<div class="bookFrame__inputText bookFrame__inputText--SignIn ">Choose wallpaper image
-			<input name="wallpaperPic" type="file" class="bookFrame__inputText__hideFile bookFrame__inputText__hideFile--SignIn">
-		</div>
+		<input type="text" required name="facebook" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder = "Facebook account">
+		<input type="text" required name="twitter" class="bookFrame__inputText bookFrame__inputText--SignIn" placeholder = "Twitter account">
 		
 		<input type="submit" name="submit" class="bookFrame__inputText bookFrame__inputText--SignIn bookFrame__submitButton_continue bookFrame__submitButton_continue--SignIn">
 

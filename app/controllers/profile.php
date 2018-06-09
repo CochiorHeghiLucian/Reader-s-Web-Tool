@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 require_once '../app/models/profile_model.php';
 
 class Profile extends Controller{

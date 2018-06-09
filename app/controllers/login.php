@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 class Login extends Controller{
 
     public function index($name=''){

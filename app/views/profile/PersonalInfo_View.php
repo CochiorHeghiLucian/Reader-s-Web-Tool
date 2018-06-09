@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
 	<title> BooX Profile </title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="~/../../PUBLIC/CSS/Styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/userGlobalPosition.js"></script>
 </head>
 
 <body onLoad="getProfileInformation()">
@@ -23,7 +22,7 @@
 		</form>
  	</nav>
 
- 	<div >
+ 	<div>
  		<div class="topFrame__cover">
  			<img class="topFrame__cover__wallpaper" src="~/../../PUBLIC/IMAGES/wallpaper.jpg" alt="wallpaper">
  			<img class="topFrame__cover__profilePicture" src="~/../../PUBLIC/IMAGES/profilePicture.jpg" href="#">
@@ -43,14 +42,12 @@
  				</li>
  			</ul>
 
-
  			<ul class="aboutUser_ul " id="profil_personal_info">
  				<li class="aboutUser_ul_li"> <i class="fa fa-home" style="font-size:30px;color:#A40A3C"></i> Lives in: <span id="location">  </span> </li>
  				<li class="aboutUser_ul_li"> <i class="fa fa-facebook-square" style="font-size:30px; color:#A40A3C"></i> Facebook account: <span id="facebook">  </span> </li>
  				<li class="aboutUser_ul_li"> <i class="fa fa-twitter-square" style="font-size:30px; color:#A40A3C"></i> Twitter account: <span id="twitter">  </span> </li>
  				<li class="aboutUser_ul_li"> <i class="fa fa-star" style="font-size:30px; color:#A40A3C"></i> Rating: <span id="rating">  </span> </li>
  			</ul>
-
 
  			<ul class="aboutUser_ul none" id="profil_preference">
  				<li class="aboutUser_ul_li"><i class="fa fa-group" style="font-size:30px;color:#A40A3C", ></i> Favorite authors: <span id="authors">  </span> </li>
@@ -72,10 +69,7 @@
  	</footer>
 </body>
 
-<script src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/profile.js"> </script>
-
-<script src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/search.js"> </script>
-
-
+<script type="text/javascript" src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/profile.js"></script>
+<script type="text/javascript" src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/search.js"></script>
 
 </html> 
