@@ -1,4 +1,4 @@
-window.onload=getUserLocation;
+window.getUserLocation();
 
 function getUserLocation() {
     
@@ -14,10 +14,12 @@ function sendCoordinatesToServer(position){
         'latitude':position.coords.latitude,
         'longitude':position.coords.longitude
     }
-
+    
     var JSON_coordinates=JSON.stringify(userCoordinates);
 
     var ajax = new XMLHttpRequest();
+
+    console.log(JSON_coordinates);
 
     ajax.open("POST","http://localhost/ProiectTWTEST/PUBLIC/setUserGlobalPosition", true);
 

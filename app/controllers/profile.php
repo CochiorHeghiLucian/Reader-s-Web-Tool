@@ -15,6 +15,8 @@ class Profile extends Controller{
         $data = ProfileModel::getPersonalInfoData($userId);
         $data = json_encode($data);
         echo $data;
+
+        
     }
 
     public function getSearchBooks(){

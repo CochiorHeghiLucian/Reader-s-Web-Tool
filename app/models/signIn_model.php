@@ -53,7 +53,7 @@ class SignIn{
 
         $database = DB::getConnection();
         
-        $query = "INSERT INTO USERS_PERSONAL_INFO (USER_ID, FACEBOOK_ACCOUNT, TWITTER_ACCOUNT, ) VALUES (?, ?, ?)";
+        $query ="INSERT INTO `USERS_PERSONAL_INFO`(`USER_ID`, `FACEBOOK_ACCOUNT`, `TWITTER_ACCOUNT`) VALUES (?, ?, ?)";
 
         $stmt = $database->prepare($query);
         $stmt->bind_param("sss", $userId, $facebookAccount, $twitterAccount);

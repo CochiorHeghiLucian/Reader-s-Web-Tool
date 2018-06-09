@@ -6,7 +6,9 @@
 	<link rel="stylesheet" href="~/../../PUBLIC/CSS/Styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script type="text/javascript" src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/userGlobalPosition.js"></script>
+	<script type="text/javascript" src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/userGlobalPosition.js"></script>	
+	<script type="text/javascript" src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/search.js"></script>
+	<script type="text/javascript" src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/profile.js"></script>
 </head>
 
 <body onLoad="getProfileInformation()">
@@ -67,9 +69,7 @@
  			</li>
   		</ul>
  	</footer>
-</body>
 
-<script type="text/javascript" src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/profile.js"></script>
-<script type="text/javascript" src="http://localhost/ProiectTWTEST/PUBLIC/SCRIPTS/search.js"></script>
+</body>
 
 </html> 

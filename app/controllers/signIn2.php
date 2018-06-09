@@ -23,7 +23,7 @@ class SignIn2 extends Controller{
 
             $largestIdInDB=Auth::getLargestIdInDB();
 
-            if($largestIdInDB<1 || $largestIdInDB == null)
+            if($largestIdInDB == null)
             {
                 $nextUserIdInDB=1;
             }
@@ -58,10 +58,10 @@ class SignIn2 extends Controller{
 
             SignIn::insertIntoUsers_Preferences($nextUserIdInDB, $authors, $genres, $books, $quote);
 
-            // $facebookAccount = $decodedReceivedJSON['facebook'];
-            // $twitterAccount = $decodedReceivedJSON['twitter'];
+            $facebookAccount = $_SESSION['facebook'];
+            $twitterAccount = $_SESSION['twitter'];
 
-            // SignIn::insertIntoUsers_Personal_Info($nextUserIdInDB, $facebookAccount, $twitterAccount);
+            SignIn::insertIntoUsers_Personal_Info($nextUserIdInDB, $facebookAccount, $twitterAccount);
 
             echo "redirectToLogIn";
         }

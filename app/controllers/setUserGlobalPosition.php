@@ -11,8 +11,15 @@ class SetUserGlobalPosition extends Controller{
         $receivedJSON = trim(file_get_contents("php://input"));
         $decodedReceivedJSON = json_decode($receivedJSON, true);
 
-        UpdateUserGlobalPosition::insertIntoUsers_Observers($userId, $decodedReceivedJSON['latitude'], $decodedReceivedJSON['longitude']);
+        if(UserGlobalPosition::insertOrUpdate($userId) == "insert"){
 
+            UserGlobalPosition::insertIntoUsers_Observers($userId, $decodedReceivedJSON['latitude'], $decodedReceivedJSON['longitude']);
+        }
+        else if(UserGlobalPosition::insertOrUpdate($userId) == "update"){
+
+            UserGlobalPosition::updateIntoUsers_Observers($userId, $decodedReceivedJSON['latitude'], $decodedReceivedJSON['longitude']);
+        }
+        
         echo "OK";
     }
 }
