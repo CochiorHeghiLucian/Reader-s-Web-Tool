@@ -4,7 +4,7 @@ class SetUserGlobalPosition extends Controller{
 
     public function index($name=''){
 
-        require_once '../app/models/setUserGlobalPosition_model.php';
+        require_once '../app/models/userGlobalPosition_model.php';
 
         $userId = $_SESSION['userId'];
         

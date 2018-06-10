@@ -14,7 +14,7 @@ class BooxWishlist extends Controller{
         $userId = $_SESSION['userId'];
         $resutArray = BooxWishlistModel::getBooksFromDB($userId);
         echo json_encode($resutArray);
-       // $out = array_values($resutArray);
+        // $out = array_values($resutArray);
         //echo json_encode($resutArray);
     }
 
