@@ -8,7 +8,7 @@ class AddBookModel{
 		// "description" : description,
         // "imageLink" : imageLink
         
-        require_once '../app/core/DB.php';
+        require_once '/opt/lampp/htdocs/ProiectTWTEST/app/core/DB.php';
 
         $database = DB::getConnection();
         //preiau id cartii din DB 

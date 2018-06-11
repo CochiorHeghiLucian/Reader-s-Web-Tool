@@ -1,4 +1,5 @@
 <?php
+require_once '/opt/lampp/htdocs/ProiectTWTEST/app/core/DB.php';
 class AddBookToWishListModel{
 
     public static function insertDataInDB($title, $author, $noPages, $description, $imageLink,$userStatus, $userId){
@@ -8,7 +9,7 @@ class AddBookToWishListModel{
 		// "description" : description,
         // "imageLink" : imageLink
         
-        require_once '../app/core/DB.php';
+        
 
         $database = DB::getConnection();
         //preiau id cartii din DB 
