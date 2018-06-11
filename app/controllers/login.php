@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 class Login extends Controller{
 
     public function index($name=''){
@@ -20,7 +18,7 @@ class Login extends Controller{
                 $id = Auth::getUserIdByEmail($email);
 
                 $_SESSION['userId'] = $id;
-                $_SESSION['email']=$email;
+                $_SESSION['email']= $email;
 
                 header('Location:http://localhost/ProiectTWTEST/PUBLIC/profile');
                 exit();

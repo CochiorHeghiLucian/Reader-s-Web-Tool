@@ -112,7 +112,13 @@ class Auth{
         $stmt->fetch();
         $stmt->close();
 
-        return $largestIdInDB;
+        if($largestIdInDB>=1){
+            
+            return $largestIdInDB;
+        }
+        else{
+            return null;
+        }
     }
 
     public static function changePassword($email, $changedPassword){
