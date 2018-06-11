@@ -21,7 +21,7 @@ function sendCoordinatesToServer(position){
 
     console.log(JSON_coordinates);
 
-    ajax.open("POST","http://localhost/ProiectTWTEST/PUBLIC/setUserGlobalPosition", true);
+    ajax.open("POST","http://localhost/ProiectTWtrueTEST/PUBLIC/setUserGlobalPosition", true);
 
     ajax.onreadystatechange = function(){
 

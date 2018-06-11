@@ -127,6 +127,126 @@ class UserGlobalPosition{
 
         return array_values($resultArray);
     }
+
+    ///////////////////////////////////////////
+    public static function cartiIncomun($userId2, $userId1){
+        
+        $database = DB::getConnection();
+
+        //preiau id cartii din DB 
+        $user1Books = self::userWhishlistBooks($userId1, $database);
+        $user2Books = self::userHisBooks($userId2, $database);
+
+        $resultArray = self::intersection($user1Books, $user2Books);
+
+        if(count($resultArray) == 0){
+            return false;
+        }else{
+            return true;
+        }
+
+        
+        
+        
+        
+       
+    }
+
+    private function intersection($array1, $array2){
+        $resultArray = array();
+        for($i = 0; $i<count($array1); $i++){
+            for($j=0; $j<count($array2); $j++){
+                if($array1[$i]["title"] == $array2[$j]["title"] ){
+                    $resultArray[] = $array1[$i];
+                }
+            }
+        }
+
+        return $resultArray;
+
+    }
+
+    //returneaza wishlistBooks dupa un userName 
+    private function userWhishlistBooks($userId, $database){
+        //select userId by username;
+
+         //preiau id cartii din DB 
+         $query = "SELECT BOOK_TITLE, BOOK_AUTHORS, BOOK_IMAGE, BOOK_DESCRIPTION 
+         from BOOKS_WISHLIST yb join BOOKS b on yb.book_Id = b.book_Id
+         where yb.user_Id = ?";
+         $stmt = $database->prepare($query);
+         if(! $stmt->bind_param("s", $userId)){
+             return "eroare la bind select ";
+         }
+         if(!$stmt->execute()){
+             return "failled DB";
+         }
+ 
+         $stmt->store_result();
+ 
+         $stmt->bind_result($titlu, $author, $image, $description);
+         
+         $resultArray = array();
+         while($stmt->fetch()){
+             $line = array("title" => $titlu, "author" => $author, "image" => $image, "description" => $description);
+             $resultArray[] = $line;
+           
+         }
+         $stmt->free_result();
+ 
+         
+ 
+         return array_values($resultArray);
+         
+         
+         
+         $stmt->close();
+    }
+
+
+    //returneaza cartile pentru schimb dupa un id
+    private function userHisBooks($userId, $database){
+        
+         //preiau id cartii din DB 
+         $query = "SELECT BOOK_TITLE, BOOK_AUTHORS, BOOK_IMAGE, BOOK_DESCRIPTION 
+         from YOUR_BOOKS yb join BOOKS b on yb.book_Id = b.book_Id
+         where yb.user_Id = ?";
+         $stmt = $database->prepare($query);
+         if(! $stmt->bind_param("s", $userId)){
+             return "eroare la bind select ";
+         }
+         if(!$stmt->execute()){
+             return "failled DB";
+         }
+ 
+         $stmt->store_result();
+ 
+         $stmt->bind_result($titlu, $author, $image, $description);
+         
+         $resultArray = array();
+         while($stmt->fetch()){
+             $line = array("title" => $titlu, "author" => $author, "image" => $image, "description" => $description);
+             $resultArray[] = $line;
+           
+         }
+         $stmt->free_result();
+ 
+         
+ 
+         return array_values($resultArray);
+         
+         
+         
+         $stmt->close();
+    }
+
+
+
+
+
+
+
+
 }
 ?>
 

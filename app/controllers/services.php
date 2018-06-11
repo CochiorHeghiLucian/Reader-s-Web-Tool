@@ -17,6 +17,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
            http_response_code(200);
 
            
+        }if(preg_match('/\/v1\/bookmarks\/statistic\/?$/', $_SERVER['REQUEST_URI'], $matches)) {
+            $resutArray = ServicesModel::getStatistics();
+           echo json_encode($resutArray);
+           http_response_code(200);
+
+           
         } else if(preg_match('/\/v1\/bookmarks\/userBooks\/(.+)?$/', $_SERVER['REQUEST_URI'], $matches) ) {    
             // cartile de la yourBook pentru un user identificat prin userName
             $userId = YourBooksModel::getIdByUserName($matches[1]);
