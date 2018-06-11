@@ -25,15 +25,73 @@ class ServicesModel{
         }
         $stmt->free_result();
 
-        
+        $stmt->close();
 
         return array_values($resultArray);
         
         
         
-        $stmt->close();
+        
     }
 
+
+    public static function getStatistics(){
+        $database = DB::getConnection();
+
+        $query = "SELECT USER_NAME, NO_OF_EXCHANGE FROM `USERS` ORDER BY 2 DESC";
+        $stmt = $database->prepare($query);
+       
+        if(!$stmt->execute()){
+            return "failled DB";
+        }
+
+        $stmt->store_result();
+
+        $stmt->bind_result($userName, $noOfExchanges);
+        
+        $resultArray = array();
+        while($stmt->fetch()){
+            $line = array("userName" => $userName, "noOfExchanges" => $noOfExchanges);
+            $resultArray[] = $line;
+          
+        }
+        $stmt->free_result();
+
+        $stmt->close();
+
+
+        ///////
+        $query = "SELECT BOOK_NAME, NUMBER_OF_EXCHANGES FROM `BOOKS_STATISTICS` ORDER BY 2 DESC;";
+        $stmt = $database->prepare($query);
+       
+        if(!$stmt->execute()){
+            return "failled DB";
+        }
+
+        $stmt->store_result();
+
+        $stmt->bind_result($booksName, $noOfExchanges);
+        
+        $resultArray2 = array();
+        while($stmt->fetch()){
+            $line = array("bookName" => $booksName, "noOfExchanges" => $noOfExchanges);
+            $resultArray2[] = $line;
+          
+        }
+        $stmt->free_result();
+
+        $stmt->close();
+
+        $result = array(["activeUserStatistics" => $resultArray], ["booksExchange" => $resultArray2]);
+        
+
+        return array_values($result);
+        
+        
+        
+        
+
+    }
 
 
 }

@@ -60,7 +60,7 @@ class mailSenderModel{
         
             $stmt->close();
 
-            $query = "SELECT `STREET`, `APARTAMENT`, `COUNTRY`, `CITY`, `ZIP_CODE`  FROM `USERS_ADDRESS` WHERE `USER_ID`=?";
+            $query = "SELECT `STREET`, `APARTMENT`, `COUNTRY`, `CITY`, `ZIP_CODE`  FROM `USERS_ADDRESS` WHERE `USER_ID`=?";
             $stmt = $database->prepare($query);
             $stmt->bind_param("s", $userId);
             $stmt->execute();
@@ -75,7 +75,7 @@ class mailSenderModel{
     public static function updateUserExchange($userId){
             $database = DB::getConnection();
          
-            $query = "SELECT `NO_OF_EXCENGE` FROM `USERS` WHERE `USER_ID`=?";
+            $query = "SELECT `NO_OF_EXCHANGE` FROM `USERS` WHERE `USER_ID`=?";
             $stmt = $database->prepare($query);
             $stmt->bind_param("s", $userId);
             $stmt->execute();
@@ -85,7 +85,7 @@ class mailSenderModel{
             
             $stmt->close();
 
-            $query = "UPDATE `USERS` SET `NO_OF_EXCENGE` = $noOfExchange  WHERE `USER_ID`=?";
+            $query = "UPDATE `USERS` SET `NO_OF_EXCHANGE` = $noOfExchange  WHERE `USER_ID`=?";
             $stmt = $database->prepare($query);
             $stmt->bind_param("s", $userId);
             $stmt->execute();
@@ -106,7 +106,7 @@ class mailSenderModel{
             $stmt->close();
 
             if($nr == 0){
-                $query = "INSERT INTO `BOOKS_STATISTICS`(`BOOK_NAME`, `NO_OF_EXCHANGES` ) VALUES (?,?)";
+                $query = "INSERT INTO `BOOKS_STATISTICS`(`BOOK_NAME`, `NUMBER_OF_EXCHANGES` ) VALUES (?,?)";
                 $stmt = $database->prepare($query);
                 $param = '1';
                 $stmt->bind_param("ss", $title, $param);
@@ -116,7 +116,7 @@ class mailSenderModel{
 
             }else{
 
-                $query = "SELECT `NO_OF_EXCHANGES` FROM `BOOKS_STATISTICS` WHERE `BOOK_NAME` = ?";
+                $query = "SELECT `NUMBER_OF_EXCHANGES` FROM `BOOKS_STATISTICS` WHERE `BOOK_NAME` = ?";
                 $stmt = $database->prepare($query);
                 $stmt->bind_param("s", $title);
                 $stmt->execute();

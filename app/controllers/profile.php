@@ -2,6 +2,7 @@
 session_start();
 require_once '../app/models/profile_model.php';
 require_once '../app/core/Email.php';
+require_once '/opt/lampp/htdocs/ProiectTWTEST/app/models/yourBooks_model.php';
 
 class Profile extends Controller{
 
@@ -31,8 +32,20 @@ class Profile extends Controller{
             $c = 2*atan2(sqrt($a),sqrt(1-$a));
             $d=$R*$c;
 
-            if($d<10000) // if another BoooX user is at maximum 10km distance
-            {
+            if($d < 10000) // if another BoooX user is at maximum 10km distance
+            {   
+                $idActualUser = YourBooksModel::getIdByEmail($myCoordinates[0]['email']);
+                $idOtherUsers = YourBooksModel::getIdByEmail($otheruUsersCoordinates[$i]['email']);
+
+                if(UserGlobalPosition::cartiIncomun($idActualUser, $idOtherUsers) || UserGlobalPosition::cartiIncomun($idOtherUsers, $idActualUser)){
+                    print_r("Au carti in comun");
+             
+
+                // var_dump($idActualUser);
+                // print_r($idOtherUsers);
+
+                
+                
                 $peerMessageBody="<p><strong>Hello!</strong>"."<br>"."<br>".
                 "We want to let you know that you have the chance to make a swap with another BooX user:".
                 "<br>"."In order to make the swap, you can use the following email address / phone number:".
@@ -48,6 +61,7 @@ class Profile extends Controller{
                 "Respectfully, the BooX team."."</p>";
 
                 Email::sendEmail($myCoordinates[0]['email'],$forMeMessageBody);
+                }
             }
         }
     }
