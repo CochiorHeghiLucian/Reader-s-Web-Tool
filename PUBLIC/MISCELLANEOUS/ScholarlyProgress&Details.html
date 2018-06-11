@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ro-RO">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>BooX</title>
+    <link rel="stylesheet" href="../CSS/Scholarly.css">
+
+  </head>
+  <body prefix="schema: http://schema.org/ xsd: http://www.w3.org/2001/XMLSchema# sa: https://ns.science.ai/">
+    <header>
+      <p class="title">BooX</p>
+      <p class="subtitle">Book Exchange Tool</p>
+    </header>
+    <article id="what" typeof="schema:ScholarlyArticle" resource="#">
+<section>
+	<ol>
+		<li property="schema:author" typeof="sa:ContributorRole">
+			<a property="schema:author" href="https://www.facebook.com/lucian.h.cochior" typeof="schema:Person">
+				<span property="schema:familyName">Cochior-Heghi</span>
+				<span property="schema:givenName">Lucian</span>
+			</a>
+		</li>
+		<li property="schema:author" typeof="sa:ContributorRole">
+			<a property="schema:author" href="https://www.facebook.com/profile.php?id=100008652727130" typeof="schema:Person">
+				<span property="schema:familyName">Betiuc</span>
+				<span property="schema:givenName">Claudiu Ciprian</span>
+			</a>
+		</li>
+	</ol>
+	<ol>
+		<li id="scienceai">
+			<a href="http://info.uaic.ro" typeof="schema:Corporation">
+				<span property="schema:name"> Faculty of Computer Science Iasi</span>
+			</a>
+		</li>
+	</ol>
+</section>	
+
+ <section typeof="sa:Abstract" id="introducere">
+        <h1>BooX</h1>
+        <p>
+		</t>   Scopul aplicatiei BooX este acela de a intermedia schimbul de carti intre bibliofili.
+		Prin intermediul aplicatiei, acestia isi pot intocmi o lista de carti proprii, pe care 
+		sunt dispusi sa le dea la schimb si o lista in care sa enumere carti pe care si le-ar dori
+		in cazul unui schimb de carte. Utilizatorii BooX care se pot conecta la serverul aplicatiei
+		prin intermediul unei conexiuni https si care dispun de un browser care suporta HTML5 Geolocation
+		API vor fi notificati prin intermediul adresei lor de email atunci cand se afla in preajma unui
+		alt utilizator de BooX cu care poate face un schimb de carte (aplicatia verifica daca macar o carte 
+		din WishList-ul unuia dintre useri se afla in YourBooX-ul celuilalt user). Datele referitoare la
+		cartile din listele unui utilizator BooX (descrierea cartii, imaginea copertii, titlul, autorul)
+		sunt obtinute de la Google Books API prin intermediul unui apel de tip GET care primeste ca 
+		parametri titlul si autorul cartii. Aplicatia este expusa ca API care respecata paradigma 
+		REST, si permite cereri de tip GET, POST, PUT si DELETE.
+        </p>
+ </section>
+
+<section typeof="sa:MaterialsAndMethods" id="tehnologii">
+        <h1>Limbaje folosite</h1>
+		 <p>In implementarea aplicatiei, am folosit urmatoarele limbaje: Pentru backend-ul aplicatiei,<a href="http://php.net/"> PHP </a>, iar pentru frontend-ul aplicatiei, am folosit
+			<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5">HTML5</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3">CSS3</a> , <a href="https://www.javascript.com/">JavaScript</a>.  
+			Pentru stocarea si persistenta datelor vom folosi baze de date relationale, optand pentru un server de baze de date <a href="http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html" >MySQL</a>.
+     	</p>
+     	<h3>PHP</h3>
+     	<p>
+     	PHP (Php:Hypertext Preprocessor) este un limbaj de programare server-side, de tip script, interpretat. Folosit inițial pentru a produce pagini web dinamice, este folosit pe scară largă în dezvoltarea paginilor și aplicațiilor web.
+		</p>
+		<h3>JAVA SCRIPT</h3>
+		<p>
+		JavaScript (JS) este un limbaj de programare orientat obiect bazat pe conceptul prototipurilor. Este folosit mai ales pentru introducerea unor funcționalități în paginile web, codul Javascript din aceste pagini fiind rulat de către browser. 
+		Cea mai des întâlnită utilizare a JavaScript este în scriptarea paginilor web. Programatorii web pot îngloba în paginile HTML script-uri pentru diverse activități cum ar fi verificarea datelor introduse de utilizatori sau crearea de meniuri și alte efecte animate. Vom folosi JavaScript pentru a accesa serviciile API-urilor. Aceste platforme ne pun la dispozitie  diverse API-uri (Application Programming Interface) , pe care le vom folosi pentru a integra continutul deja existent pe platformele mentionate,in aplicatia noastra.
+		</p>
+
+		</p>
+</section>
+
+<section typeof="sa:MaterialsAndMethods" id="arhitectura">
+<h1>Arhitectura</h1>
+ 					 <figure typeof="sa:Image">
+      				 </figure>
+					<p>
+						Aplicatia va fi proiectata pe arhitectura MVC. Aplicatia va fi una multi page, adica, in functie de actiunile utilizatorului, 
+						browserul va naviga catre alta pagina. In continuare vom descrie paginile aplicatiei noastre.
+					</p>
+					
+					<section>
+						<ol>
+					<li>
+						<section typeof="sa:Abstract">
+							<h3 class="page">
+								Homepage
+							</h3>
+							<p>
+								Aceasta pagina este cea care il intampina pe utilizator la prima accesare a aplicatiei.
+								Din aceasta pagina, utilizatorul are posibilitatea de a se loga introducand adresa de email si parola.
+								La trimiterea datelor introduse in formular, in acest punct, aplicatia face doua verificari: mai intai verifica
+								existenta in baza de date a email-ului, iar in cazul in care acesta nu este gasit utilizatorul este anuntat 
+								ca adresa introdusa nu este recunoscuta ca fiind adresa unui utilizator de BooX. Daca rezultatul primei validari este unul pozitiv,
+								aplicatia verifica in baza de date daca parola introdusa de utilizator este cea care corespunde in bazaa de date adresei de email introduse.
+								In acelasi formular, in cazul in care utilizatorul si-a uitat parola contului, acesta poate accesa linkul
+								"Forgotten Password" unde are posibilitatea resetarii parolei de BooX. Accesand linkul, va fi redirectionat
+								spre o pagina unde va completa adresa de email si dupa submitere, va primi pe adresa de email un link la care poate
+								introduce o parola noua pentru cont. Mai jos, utilizatorul are posibilitatea de a fi redirectionat catre pagina de 
+								inregistrare a unui nou cont de BooX.
+							</p>
+						</section>
+					</li>
+					
+					<li>
+						<section typeof="sa:Abstract">
+							<h3 class="page">
+								Sign Up
+							</h3>
+							<p>
+								Aceasta este prima pagina din cele doua necesare a fi parcurs pentru inregistrarea pe site. Utilizatorul va trebui sa furnizeze urmatoarele informatii :
+								<ul>
+									<li>
+										First-name
+									</li>
+									<li>
+										Last-name
+									</li>
+									<li>
+										Male / Female
+									</li>
+									<li>
+										Data nasterii
+									</li>
+									<li>
+										Phone number
+									</li>
+									<li>
+										Email
+									</li>
+									<li>
+										Confirm email
+									</li>
+									<li>
+										Password
+									</li>
+									<li>
+										Confirm	password
+									</li>
+									<li>
+										Street address
+									</li>
+									<li>
+										Apartment
+									</li>
+									<li>
+										Country
+									</li>
+									<li>
+										City
+									</li>
+									<li>
+										ZIP code
+									</li>
+									<li>
+										Facebook account
+									</li>
+									<li>
+										Twitter account
+									</li>
+									<p></p>
+								</ul>
+								Daca datele au fost introduse corect, apasand pe butonul de inregistrare, utilizatorul va fi redirectionat pe urmatoarea 
+								pagina de Sing Up, unde va trebui sa introduca urmatoarele date:
+								<p></p>
+								<ul>
+									<li>
+										Favorite authors
+									</li>
+									<li>
+										Favorite genres
+									</li>
+									<li>
+										Facebook books
+									</li>
+									<li>
+										Favourite quote 
+									</li>
+								</ul>
+							</p>
+							<p>Daca utilizatorul este de acord cu Termenii si Conditiile aplicatiei, i se va crea contul de utilizator si va 
+								fi redirectionat catre pagina de login, de unde poate incepe folosirea efectiva a aplicatiei.
+							</p>
+						</section>
+					</li>					
+					<li>
+						<section typeof="sa:Abstract">
+							<h3 class="page">
+								Pagina de profil
+							</h3>
+							<p>
+								Aceasta pagina reprezinta centrul interactiunii aplicatie-utilizator,acesta avand acces la mai multe optiuni.
+								In meniul din headerul dashboard-ului, utilizatorul are urmatoarele optiuni:
+
+							</p>
+							<p>
+								In partea de sus va exista o bara de optiuni, cu urmatoarele butoane:
+
+								<ul>
+								<ul>
+									<li>	
+										Your BooX
+										<p>Accesand aceasta optiune, utilizatorul poate sa vada lista de carti pe care le are
+											afisate ca fiind disponibile pentru schimb. Din aceasta pagina, utilizatorul are posibilitatea 
+											sa adauge carti in lista de YourBooX apasand pe butonul "Add book". Din aceeasi pagina, aceasta
+											poate sa elimine o carte din lista apasand pe butonul "Remove book" corespunzator fiecarei carti
+											din lista.
+										</p>
+									</li>
+									<li>
+										BooX WishList
+										<p>Accesand aceasta optiune, utilizatorul poate sa vada lista de carti pe care le are
+												doreste pentru schimb. Din aceasta pagina, utilizatorul are posibilitatea 
+												sa adauge carti in lista de WishList apasand pe butonul "Add book". Din aceeasi pagina, aceasta
+												poate sa elimine o carte din lista apasand pe butonul "Remove book" corespunzator fiecarei carti
+												din lista.
+										</p>
+									</li>
+									<li>
+										Search for BooX
+										<p>
+											Accesand aceasta optiune, utilizatorul poate sa caute o carte in baza de date a aplicatiei
+											introducand numele cartii.
+										</p>
+									</li>
+									<li>
+										Log Out
+										<p> Accesand aceasta optiune, utilizatorul va parasi aplicatia, datele sale fiind sterse din sesiune si 
+											acesta este redirectat la pagina de LogIn.
+										</p>
+									</li>
+								</ul>
+							</ul>
+						</p>
+						<p>
+							In zona centrala a paginii de profil, in partea stanga utilizatorul poate naviga intre doua tab-uri: In tab-ul de 
+							"Personal info" sunt afisate date personale ale acestuia, cum ar fi: localitatea, tara in care locuieste; contul de 
+							facebook, twitter si ratingul din cadrul aplicatiei. In tab-ul denumit "Preferences", utilizatorul poate sa vizioneze 
+							autorii, genurile literare si cartile favorite pe care le-a introdus la momentul intocmirii contului sau.
+							In partea dreapta este afisat citatul preferat al utilizatorului.
+						</p>
+</section>
+
+<section typeof="sa:MaterialsAndMethods" id="planificare">
+<h1>Planificarea / etapele dezvoltarii aplicatiei</h1>
+<ul>
+	<li>
+		9 Mai (Git Commit)
+		<ul>
+			<li>Primul commit pentru aplicatie</li>
+		</ul>
+	</li>
+	<li>
+		16 Mai (Git commit)
+		<ul>
+			<li>Modificarea structurii proiectului in vederea
+				folosirii avantajelor patternului MVC, a facilitarii
+				rutarii.
+			</li>
+		</ul>
+	</li>
+	<li>
+		18-20 Mai (Git commits)
+		<ul>
+			<li>Inceperea implementarii SignIn-ului, 
+			</li>
+			<li>
+				Implementarea recuperarii parolei uitate
+			</li>
+			<li>
+				Crearea de functii de validare pentru SignIn
+			</li>
+			<li>
+				Inceperea implementarii SignUp-ului
+			</li>
+		</ul>
+	</li>
+	<li>
+		27 Mai (Git commit)
+			<ul>
+				<li>Adaugarea clasei pentru hash parola
+				</li>
+				<li>Restructurarea proiectului
+					</li>
+			</ul>
+	</li>
+	<li>
+		28 Mai (Git commit)
+		<ul>
+			<li>Continuarea implementarii SignUp-ului
+			</li>
+			<li> Efectuare modificari in view-ul de profil 
+			</li>
+			<li> Finalizarea implementarii de recuperare a parolei 
+			</li>
+		</ul>
+	</li>
+	<li>
+		30 - 31 Mai (Git commits)
+		<ul>
+			<li>Implementarea apelului Ajax de pe pagina de profil
+			</li>
+			<li> Inceperea implementarii functionalitatii "Add BooX" 
+			</li>
+		</ul>
+	</li>
+	<li>
+		2 - 3 Iunie (Git commits)
+		<ul>
+			<li> SignUp (prima pagina) implementata
+			</li>
+			<li> Inceperea implementarii paginii de SignUp (a doua pagina)
+			</li>
+			<li> Finalizarea implementarii de recuperare a parolei 
+			</li>
+			<li> Implementare functionalitatii BooXWishList 
+			</li>
+			<li> Reorganizare cod (creare de fisiere JS pentru scripturi)
+			</li>
+		</ul>
+	</li>
+	<li>
+		4 - 6 Iunie (Git commits)
+		<ul>
+			<li> Inceperea implementarii functionalitatii "Search BooX"
+			</li>
+			<li> Implemetare metoda pentru trimitere de emailuri utilizatorilor
+			</li>
+			<li> Implementare functionalitate "Logout" 
+			</li>
+			<li> Implemetare SignUp finalizata 
+			</li>
+			<li> Introducere de constrangere pentru username unic
+			</li>
+			<li> Implementare modul pentru schimb de carte
+			</li>
+		</ul>
+	</li>
+	<li>
+		7 - 10 Iunie (Git commits)
+		<ul>
+			<li> Finalizarea implementare "Search BooX"
+			</li>
+			<li> Modificare metoda "criptare parola" (SHA256->functie php pentru hash parola)
+			</li>
+			<li> Modificare metoda de "recuperare parola" (se face resetare parolei la un link trimis prin email)
+			</li>
+			<li> Inceperea expunere ca API a aplicatiei 
+			</li>
+			<li> Inceperea implementarii notificarii pe baza geolocatiei 
+			</li>
+			<li> Finalizarea implementarii notificarii pe baza locatiei
+			</li>
+			<li> Editare fisier readme.txt pentru aplicatie 
+			</li>
+		</ul>
+	</li>
+	<li>
+		11 Iunie (Git commits)
+		<ul>
+			<li> Finalizarea implementare expunere aplicatie ca API
+			</li>
+			<li> Adaugare statistici in format JSON
+			</li>
+		</ul>
+	</li>
+
+</section>
+	
+</article>
+<footer>
+      <p>
+        <a href="http://www.info.uaic.ro/bin/Main/">FII</a>
+		• 	
+        <a href="http://profs.info.uaic.ro/~busaco/teach/courses/web/">Tehnologii Web</a>      
+      </p>
+</footer>
+</body>
+</html>

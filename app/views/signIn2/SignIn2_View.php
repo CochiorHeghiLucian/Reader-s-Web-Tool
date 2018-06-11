@@ -16,7 +16,7 @@
 
 <body style="background-image:url(http://localhost/ProiectTWTEST/PUBLIC/IMAGES/bookshelves-wallpaper-1920x1080.jpg); background-repeat: no-repeat;">
 	<div class="bookFrame bookFrame--Sign2">
-		<p class="frameTitle frameTitle--signIn2">Sign In</p>
+		<p class="frameTitle frameTitle--signIn2">Sign Up</p>
 		<form onsubmit="checkFormInput(); return false;">
 
 		<p class="signInErrorMessage" name="serverMessage"></p>

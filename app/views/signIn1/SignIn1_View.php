@@ -17,7 +17,7 @@
 
 	<div class="bookFrame bookFrame--signIn">
 
-	<p class="frameTitle frameTitle--signIn">Sign In</p>
+	<p class="frameTitle frameTitle--signIn">Sign Up</p>
 
 	<form onsubmit="checkFormInput(); return false;">
 		
