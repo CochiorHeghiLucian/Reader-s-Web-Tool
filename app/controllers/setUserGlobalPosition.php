@@ -11,16 +11,20 @@ class SetUserGlobalPosition extends Controller{
         $receivedJSON = trim(file_get_contents("php://input"));
         $decodedReceivedJSON = json_decode($receivedJSON, true);
 
+        $flag=true;
+
         if(UserGlobalPosition::insertOrUpdate($userId) == "insert"){
 
-            UserGlobalPosition::insertIntoUsers_Observers($userId, $decodedReceivedJSON['latitude'], $decodedReceivedJSON['longitude']);
+            if(UserGlobalPosition::insertIntoUsers_Observers($userId, $decodedReceivedJSON['latitude'], $decodedReceivedJSON['longitude'])=="failled the users DB insertion");
+                $flag=false;
         }
-        else if(UserGlobalPosition::insertOrUpdate($userId) == "update"){
+        else{
 
-            UserGlobalPosition::updateIntoUsers_Observers($userId, $decodedReceivedJSON['latitude'], $decodedReceivedJSON['longitude']);
+            if(UserGlobalPosition::updateIntoUsers_Observers($userId, $decodedReceivedJSON['latitude'], $decodedReceivedJSON['longitude']=="failled the users DB update"));
+                $flag=false;
         }
         
-        echo "OK";
+        echo $flag;
     }
 }
 ?>

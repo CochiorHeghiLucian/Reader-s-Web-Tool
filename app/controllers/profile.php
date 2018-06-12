@@ -39,13 +39,7 @@ class Profile extends Controller{
 
                 if(UserGlobalPosition::cartiIncomun($idActualUser, $idOtherUsers) || UserGlobalPosition::cartiIncomun($idOtherUsers, $idActualUser)){
                     print_r("Au carti in comun");
-             
-
-                // var_dump($idActualUser);
-                // print_r($idOtherUsers);
-
-                
-                
+                 
                 $peerMessageBody="<p><strong>Hello!</strong>"."<br>"."<br>".
                 "We want to let you know that you have the chance to make a swap with another BooX user:".
                 "<br>"."In order to make the swap, you can use the following email address / phone number:".

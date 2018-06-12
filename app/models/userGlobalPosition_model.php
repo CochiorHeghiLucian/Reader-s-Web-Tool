@@ -15,7 +15,7 @@ class UserGlobalPosition{
         if(!$stmt->execute()){
             return "failled the users DB insertion";
         }
-        $stmt->fetch(); 
+       // $stmt->fetch(); 
         $stmt->close();
     }
 
@@ -55,7 +55,7 @@ class UserGlobalPosition{
         $stmt->bind_result($counter);
         $stmt->fetch(); 
 
-        if($counter == 0){
+        if($counter==0){
             return "insert";
         }
         else{
@@ -102,7 +102,7 @@ class UserGlobalPosition{
 
         $database = DB::getConnection();
 
-        $query = "SELECT `LATITUDE`, `LONGITUDE`, `EMAIL_ADDR`, `PHONE_NUMBER` FROM `USERS_OBSERVERS`uo JOIN `USERS` u ON uo.USER_ID=u.USER_ID WHERE u.USER_ID= ?";
+        $query = "SELECT `LATITUDE`, `LONGITUDE`, `EMAIL_ADDR`, `PHONE_NUMBER` FROM `USERS_OBSERVERS` uo JOIN `USERS` u ON uo.USER_ID=u.USER_ID WHERE u.USER_ID= ?";
 
         $stmt = $database->prepare($query);
 

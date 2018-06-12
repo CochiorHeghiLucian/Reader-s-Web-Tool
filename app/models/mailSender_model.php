@@ -125,7 +125,7 @@ class mailSenderModel{
                 $noOfExchange = $noOfExchange +1;
                 $stmt->close();
 
-                $query = "UPDATE `BOOKS_STATISTICS` SET `NO_OF_EXCHANGES` = $noOfExchange  WHERE `BOOK_NAME`=?";
+                $query = "UPDATE `BOOKS_STATISTICS` SET `NUMBER_OF_EXCHANGES` = $noOfExchange  WHERE `BOOK_NAME`=?";
                 $stmt = $database->prepare($query);
                 $stmt->bind_param("s", $title);
                 $stmt->execute();

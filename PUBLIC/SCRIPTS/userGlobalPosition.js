@@ -19,21 +19,19 @@ function sendCoordinatesToServer(position){
 
     var ajax = new XMLHttpRequest();
 
-    console.log(JSON_coordinates);
-
-    ajax.open("POST","http://localhost/ProiectTWtrueTEST/PUBLIC/setUserGlobalPosition", true);
+    ajax.open("POST","http://localhost/ProiectTWTEST/PUBLIC/setUserGlobalPosition", true);
 
     ajax.onreadystatechange = function(){
 
         if(ajax.readyState == 4 && ajax.status == 200){
 
-            if(ajax.response == "OK"){
+            if(ajax.response ==false){
 
-                console.log('ok');
+                console.log('false');
             }
             else{
 
-                console.log('not ok');
+                console.log('true');
             }
         }
     }
